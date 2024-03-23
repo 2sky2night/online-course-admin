@@ -1,0 +1,89 @@
+// @ts-ignore
+/* eslint-disable */
+import { request } from '@umijs/max';
+
+/** 申请注册 游客申请注册到后台应用中，只能申请管理员和老师的角色 POST /api/auth/account/apply */
+export async function authAccountControllerApply(
+  body: API.ApplyAccountDto,
+  options?: { [key: string]: any },
+) {
+  return request<API.ResponseDto & { data?: API.RApplyAccountDto }>('/api/auth/account/apply', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** 审批注册申请 超级管理员审批注册申请 POST /api/auth/account/approval */
+export async function authAccountControllerApproval(
+  body: API.ApprovalAccountDto,
+  options?: { [key: string]: any },
+) {
+  return request<API.ResponseEmptyDto>('/api/auth/account/approval', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** 登录 登录后台应用 POST /api/auth/account/login */
+export async function authAccountControllerLogin(
+  body: API.LoginAccountDto,
+  options?: { [key: string]: any },
+) {
+  return request<API.ResponseDto & { data?: API.RLoginAccountDto }>('/api/auth/account/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** 邮箱验证码登录 邮箱验证码登录后台应用 POST /api/auth/account/login/email */
+export async function authAccountControllerEmailLogin(
+  body: API.EmailLoginDto,
+  options?: { [key: string]: any },
+) {
+  return request<API.ResponseDto & { data?: API.REmailAccountDto }>(
+    '/api/auth/account/login/email',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: body,
+      ...(options || {}),
+    },
+  );
+}
+
+/** 获取邮箱登录验证码 登录后台应用时通过邮箱获取验证码 POST /api/auth/account/login/email/code */
+export async function authAccountControllerGetLoginCode(
+  body: API.EmailCodeDto,
+  options?: { [key: string]: any },
+) {
+  return request<API.ResponseEmptyDto>('/api/auth/account/login/email/code', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    data: body,
+    ...(options || {}),
+  });
+}
+
+/** 此处后端没有提供注释 GET /api/auth/account/token */
+export async function authAccountControllerToken(options?: { [key: string]: any }) {
+  return request<any>('/api/auth/account/token', {
+    method: 'GET',
+    ...(options || {}),
+  });
+}
