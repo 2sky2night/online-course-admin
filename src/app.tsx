@@ -1,7 +1,7 @@
 import { LinkOutlined } from "@ant-design/icons";
 import { UserOutlined } from "@ant-design/icons";
 import type { Settings as LayoutSettings } from "@ant-design/pro-components";
-import { history,Link, RunTimeLayoutConfig, SelectLang } from "@umijs/max";
+import { history, Link, RunTimeLayoutConfig, SelectLang } from "@umijs/max";
 
 import defaultSettings from "../config/defaultSettings";
 import { AvatarDropdown } from "./layouts/components/Header/AvatarDropdown";
@@ -22,6 +22,7 @@ export async function getInitialState(): Promise<InitialState> {
   const token = Token.getToken();
   if (token === null) {
     // 无token，去登录页
+    // TODO 申请注册页会被拦截到这里，处理下
     history.push("/login");
   } else {
     try {

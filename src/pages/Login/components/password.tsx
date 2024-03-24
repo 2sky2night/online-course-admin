@@ -22,6 +22,21 @@ export default function Password() {
               <FormattedMessage id="pages.login.username.required" defaultMessage="请输入用户名!" />
             ),
           },
+          {
+            message: (
+              <FormattedMessage
+                id="pages.login.username.invalid"
+                defaultMessage="用户名长度为1-15位！"
+              />
+            ),
+            validator(_, value) {
+              if (value.length >= 1 && value.length <= 15) {
+                return Promise.resolve();
+              } else {
+                return Promise.reject();
+              }
+            },
+          },
         ]}
       />
       <ProFormText.Password
@@ -42,11 +57,11 @@ export default function Password() {
             message: (
               <FormattedMessage
                 id="pages.login.password.invalid"
-                defaultMessage="密码长度为6-18位!"
+                defaultMessage="密码长度为6-14位!"
               />
             ),
             validator(_, value: string) {
-              if (value.length >= 6 && value.length <= 18) {
+              if (value.length >= 6 && value.length <= 14) {
                 return Promise.resolve();
               } else {
                 return Promise.reject();
