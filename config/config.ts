@@ -1,6 +1,5 @@
 // https://umijs.org/config/
 import { defineConfig } from "@umijs/max";
-import { join } from "path";
 import defaultSettings from "./defaultSettings";
 import proxy from "./proxy";
 import routes from "./routes";
@@ -112,7 +111,9 @@ export default defineConfig({
    * @description 它基于 axios 和 ahooks 的 useRequest 提供了一套统一的网络请求和错误处理方案。
    * @doc https://umijs.org/docs/max/request
    */
-  request: {},
+  request: {
+    dataField: "data", // 格式化后端响应成功的数据，useRequest可以直接消费data
+  },
   /**
    * @name 权限插件
    * @description 基于 initialState 的权限插件，必须先打开 initialState

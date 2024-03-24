@@ -1,22 +1,38 @@
 import { LinkOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import type { Settings as LayoutSettings } from "@ant-design/pro-components";
-import { Link, RunTimeLayoutConfig, SelectLang } from "@umijs/max";
+import { history,Link, RunTimeLayoutConfig, SelectLang } from "@umijs/max";
 
 import defaultSettings from "../config/defaultSettings";
-import { AvatarDropdown, AvatarName } from "./layouts/components/Header/AvatarDropdown";
-import { Question, Theme } from "./layouts/components/Header/RightContent";
+import { AvatarDropdown } from "./layouts/components/Header/AvatarDropdown";
+import { Theme } from "./layouts/components/Header/RightContent";
 import { errorConfig } from "./requestErrorConfig";
+import { accountControllerGetInfoByToken as getAccountInfo } from "./services/go_study_server/account";
 import { InitialState } from "./types";
+import { Account } from "./types/account";
+import { Token } from "./utils";
 
 const isDev = process.env.NODE_ENV === "development";
 
-//
 /**
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 export async function getInitialState(): Promise<InitialState> {
+  let account: null | Account = null;
+  const token = Token.getToken();
+  if (token === null) {
+    // 无token，去登录页
+    history.push("/login");
+  } else {
+    try {
+      const { data } = await getAccountInfo();
+      account = data; // 获取用户数据成功，保存在全局
+    } catch {
+      // 获取失败，无任何操作，处理交给errorHandler
+    }
+  }
   return {
-    user: null,
+    account,
     config: {
       isDark: false,
     },
@@ -33,18 +49,15 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
   return {
     actionsRender: () => [
       <Theme key="theme" changeState={changeState}></Theme>,
-      <Question key="doc" />,
       <SelectLang key="SelectLang" />,
     ],
     avatarProps: {
-      src: "https://images.dog.ceo/breeds/dingo/n02115641_13253.jpg",
-      title: <AvatarName />,
-      render: (_, avatarChildren) => {
-        return <AvatarDropdown menu>{avatarChildren}</AvatarDropdown>;
+      src: initialState?.account?.avatar,
+      title: initialState?.account?.account_name,
+      icon: <UserOutlined />,
+      render: (_, c) => {
+        return <AvatarDropdown>{c}</AvatarDropdown>;
       },
-    },
-    waterMarkProps: {
-      content: "张三",
     },
     footerRender: false,
     onPageChange: () => {

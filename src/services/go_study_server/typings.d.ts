@@ -16,6 +16,25 @@ declare namespace API {
     email: string;
   };
 
+  type AccountInfoDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 账户ID */
+    account_id: number;
+    /** 账户名 */
+    account_name: string;
+    /** 头像 */
+    avatar?: string;
+    /** 邮箱 */
+    email: string;
+    /** 角色 */
+    role: RoleDto;
+  };
+
   type AddCommentDto = {
     /** 视频id */
     video_id: number;
@@ -64,7 +83,7 @@ declare namespace API {
     /** 申请注册的原因 */
     description: string;
     /** 申请注册的角色 */
-    role_name: 'Teacher' | 'Admin';
+    role_name: "Teacher" | "Admin";
   };
 
   type ApprovalAccountDto = {
@@ -361,7 +380,7 @@ declare namespace API {
     /** 申请注册原因 */
     description: string;
     /** 申请的角色 */
-    role_name: 'Teacher' | 'Admin';
+    role_name: "Teacher" | "Admin";
   };
 
   type RChunkUploadProgress = {
@@ -423,7 +442,7 @@ declare namespace API {
     /** 调用情况描述 */
     msg: string;
     /** 响应的实际数据 */
-    data: any;
+    data: null;
   };
 
   type RFastUploadDto = {
@@ -470,6 +489,19 @@ declare namespace API {
   type RMergeChunk = {
     /** 任务id，可以该id来查询任务执行的情况 */
     merge_key: string;
+  };
+
+  type RoleDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 角色id */
+    role_id: number;
+    /** 角色名称 */
+    role_name: "SuperAdmin" | "Admin" | "Teacher";
   };
 
   type RToDoVideoProcessing = {

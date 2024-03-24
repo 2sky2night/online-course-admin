@@ -12,20 +12,36 @@
  */
 export default [
   {
-    path: "/",
-    component: "./Home",
-    name: "home", // 适配国际化
+    path: "/login",
+    component: "./login",
+    name: "login", // 适配国际化，省略menu.前缀
+    layout: false,
+    wrappers: ["@/wrappers/no-login"], // 登录后不能进入的页面
   },
   {
-    path: "/login",
-    component: "./Login",
-    name: "login",
+    path: "/apply-register",
+    component: "./apply-register",
+    name: "apply-register",
     layout: false,
+    wrappers: ["@/wrappers/no-login"], // 登录后不能进入的页面
+  },
+  {
+    path: "/",
+    // 子项往上提，仍旧展示,
+    flatMenu: true,
+    access: "isLogin", // 默认系统页登录了都能访问
+    routes: [
+      {
+        path: "/",
+        component: "./home",
+        name: "home",
+      },
+    ],
   },
   {
     path: "*",
     layout: false,
-    component: "./404",
+    component: "./error/404",
     name: "exception.404",
   },
 ];

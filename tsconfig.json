@@ -16,7 +16,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@@/*": ["./src/.umi/*"],
-      "@@test/*": ["./src/.umi-test/*"]
+      "@@test/*": ["./src/.umi-test/*"],
+      "@api/*": ["./src/services/go_study_server/*"]
     }
   },
   "include": ["./**/*.d.ts", "./**/*.ts", "./**/*.tsx"]

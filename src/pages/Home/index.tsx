@@ -1,14 +1,9 @@
 import { Button } from "antd";
 import { useTheme } from "antd-style";
 
-import { authUserControllerAlipayLogin } from "@/services/go_study_server/authUser";
 export default function HomePage() {
   const theme = useTheme();
-  const handleClick = () => {
-    authUserControllerAlipayLogin({ code: "11" }).then((r) => {
-      r.data?.access_token;
-    });
-  };
+  const handleClick = () => {};
   return (
     <div>
       <Button type="primary" onClick={handleClick}>
