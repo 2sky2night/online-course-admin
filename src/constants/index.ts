@@ -18,3 +18,8 @@ export const AppLogoURL = "/logo.svg";
  * 匹配邮箱的正则
  */
 export const EmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+/**
+ * 未登录用户的路由白名单
+ */
+export const NoLoginWhitelist = ["/login", "/apply-register"];

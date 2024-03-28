@@ -3,7 +3,7 @@ import { SelectLang, useModel } from "@umijs/max";
 import { history } from "@umijs/max";
 import { Button, Flex } from "antd";
 import { createStyles } from "antd-style";
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 
 import { Tabs } from "@/components";
 import type { TabsProps } from "@/components/tabs";
@@ -15,7 +15,7 @@ import {
   authAccountControllerLogin as loginByPassword,
 } from "@/services/go_study_server/authAccount";
 import { InitialState } from "@/types";
-import { globalErrorMsg,Token } from "@/utils";
+import { globalErrorMsg, Token } from "@/utils";
 
 import Email from "./components/email";
 import Password from "./components/password";
@@ -53,6 +53,7 @@ export default function LoginPage() {
   const { t } = useI18n();
   const { styles } = useStyles();
   const formRef = useRef(null);
+  const [loading, setLoading] = useState(false);
   // 保存tab栏的key
   const tabs = useRef<TabKeys | null>(null);
   const items: TabsProps<TabKeys>["items"] = [
@@ -91,20 +92,28 @@ export default function LoginPage() {
   };
   // 提交的回调
   const handleSubmit = useCallback((data: API.LoginAccountDto | API.EmailLoginDto) => {
+    setLoading(true);
     if (tabs.current === TabKeys.email) {
       // 邮箱登录
       const { email, code } = data as API.EmailLoginDto;
-      loginByEmail({ email, code }).then(({ data }) => {
-        handleLogin(data!.access_token);
-      });
+      loginByEmail({ email, code })
+        .then(({ data }) => {
+          handleLogin(data!.access_token);
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
     } else if (tabs.current === TabKeys.password) {
       // 密码登录
       const { password, username } = data as API.LoginAccountDto;
-      loginByPassword({ password, username }).then(({ data }) => {
-        handleLogin(data!.access_token);
-      });
+      loginByPassword({ password, username })
+        .then(({ data }) => {
+          handleLogin(data!.access_token);
+          setLoading(false);
+        })
+        .catch(() => setLoading(false));
     } else {
       globalErrorMsg(t);
+      setLoading(false);
     }
   }, []);
 
@@ -115,6 +124,7 @@ export default function LoginPage() {
           <SelectLang />
         </Flex>
         <LoginForm
+          loading={loading}
           formRef={formRef}
           contentStyle={{
             minWidth: 280,

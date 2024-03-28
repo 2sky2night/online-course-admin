@@ -6,4 +6,10 @@ export default {
   "global.role.admin": "管理员",
   "global.role.teacher": "老师",
   "global.role.superAdmin": "超级管理员",
+  "global.back": "返回",
+  "global.createTime": "创建时间",
+  "global.updateTime": "更新时间",
+  "global.action": "操作",
+  "global.info": "查看",
+  "global.role": "角色",
 };

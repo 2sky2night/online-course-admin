@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "@umijs/max";
-import type { TabPaneProps,TabsProps as AntdTabsProps } from "antd";
+import type { TabPaneProps, TabsProps as AntdTabsProps } from "antd";
 import { Tabs as AntdTabs } from "antd";
 import { useEffect, useState } from "react";
 

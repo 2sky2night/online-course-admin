@@ -1,7 +1,8 @@
-import { ProForm, ProFormSelect,ProFormText, ProFormTextArea } from "@ant-design/pro-components";
-import { FormattedMessage, history,SelectLang } from "@umijs/max";
-import { Flex, message,Space } from "antd";
+import { ProForm, ProFormSelect, ProFormText, ProFormTextArea } from "@ant-design/pro-components";
+import { FormattedMessage, history, SelectLang } from "@umijs/max";
+import { Flex, message, Space } from "antd";
 import { createStyles } from "antd-style";
+import { useState } from "react";
 
 import { AppLogoURL, EmailRegex, LoginBackgourndImg } from "@/constants";
 import { Roles } from "@/enums";
@@ -51,11 +52,16 @@ const useStyles = createStyles(({ token }) => {
 export default function ApplyRegisterPage() {
   const { t } = useI18n();
   const { styles } = useStyles();
+  const [loading, setLoading] = useState(false);
   const handleSubmit = async (formData: API.ApplyAccountDto) => {
-    apply({ ...formData }).then(() => {
-      message.success(t("pages.applyRegister.formOk", "申请注册成功"));
-      history.push("/login");
-    });
+    setLoading(true);
+    apply({ ...formData })
+      .then(() => {
+        setLoading(false);
+        message.success(t("pages.applyRegister.formOk", "申请注册成功"));
+        history.push("/login");
+      })
+      .catch(() => setLoading(false));
   };
   return (
     <div className={styles.page}>
@@ -71,6 +77,7 @@ export default function ApplyRegisterPage() {
         </div>
         <div className={styles.subTitle}>{t("menu.apply-register", "申请账号注册")}</div>
         <ProForm<API.ApplyAccountDto>
+          loading={loading}
           submitter={{
             render(_, dom) {
               return (

@@ -12,6 +12,7 @@
  */
 export default [
   {
+    // 登录
     path: "/login",
     component: "./login",
     name: "login", // 适配国际化，省略menu.前缀
@@ -19,9 +20,10 @@ export default [
     wrappers: ["@/wrappers/no-login"], // 登录后不能进入的页面
   },
   {
+    // 申请注册
     path: "/apply-register",
     component: "./apply-register",
-    name: "apply-register",
+    name: "applyRegister",
     layout: false,
     wrappers: ["@/wrappers/no-login"], // 登录后不能进入的页面
   },
@@ -32,16 +34,60 @@ export default [
     access: "isLogin", // 默认系统页登录了都能访问
     routes: [
       {
+        // 系统首页
         path: "/",
         component: "./home",
         name: "home",
       },
+      {
+        // 账户
+        path: "/account",
+        name: "account",
+        routes: [
+          {
+            // 申请注册
+            path: "apply",
+            name: "apply", // 定义一个menu.account.apply即可
+            access: "isSuperAdmin", // 超级管理员可见
+            routes: [
+              {
+                // 申请管理
+                path: "manage",
+                component: "./account/apply/manage",
+                name: "manage", // 定义一个menu.account.apply.manage即可
+              },
+              {
+                // 申请日志
+                path: "log",
+                component: "./account/apply/log",
+                name: "log",
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {
-    path: "*",
+    path: "/403",
+    layout: false,
+    component: "./error/403",
+    name: "exception.notPermission",
+  },
+  {
+    path: "/500",
+    layout: false,
+    component: "./error/500",
+    name: "exception.serverError",
+  },
+  {
+    path: "/404",
     layout: false,
     component: "./error/404",
-    name: "exception.404",
+    name: "exception.notFind",
+  },
+  {
+    path: "*",
+    redirect: "/404",
   },
 ];

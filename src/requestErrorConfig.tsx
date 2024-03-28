@@ -4,7 +4,7 @@ import { history } from "@umijs/max";
 import { message } from "antd";
 
 import type { ResponseError } from "@/types";
-import type { AxiosError,AxiosResponse, RequestOptions } from "@@/plugin-request/request";
+import type { AxiosError, AxiosResponse, RequestOptions } from "@@/plugin-request/request";
 
 import { Token } from "./utils";
 

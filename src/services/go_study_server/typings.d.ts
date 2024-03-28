@@ -86,11 +86,93 @@ declare namespace API {
     role_name: "Teacher" | "Admin";
   };
 
+  type ApplyRegisterDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 申请注册的id */
+    apply_id: number;
+    /** 申请注册的用户名称 */
+    account_name: string;
+    /** 申请注册的原因 */
+    description: string;
+    /** 申请注册时的邮箱 */
+    email: string;
+    /** 申请注册的角色 */
+    role: RoleDto;
+  };
+
+  type ApplyRegisterInfoDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 申请注册的id */
+    apply_id: number;
+    /** 申请注册的用户名称 */
+    account_name: string;
+    /** 申请注册的原因 */
+    description: string;
+    /** 申请注册时的邮箱 */
+    email: string;
+    /** 申请注册的角色 */
+    role: RoleDto;
+    /** 审批的结果 */
+    approval: ApprovalLogDto;
+  };
+
   type ApprovalAccountDto = {
     /** 申请注册的id */
     apply_id: number;
     /** 审批的结果 */
     status: boolean;
+  };
+
+  type ApprovalLogDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 审批id */
+    trace_id: number;
+    /** 审批状态 */
+    status: boolean;
+  };
+
+  type ApprovalLogInfoDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 审批id */
+    trace_id: number;
+    /** 审批状态 */
+    status: boolean;
+    /** 申请记录 */
+    apply: ApplyRegisterDto;
+    /** 审批的操作人 */
+    approval_account: ApplyRegisterDto;
+  };
+
+  type AuthAccountControllerGetApplyListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
+  };
+
+  type AuthAccountControllerGetApprovalListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
   };
 
   type ChunkProgressDto = {
@@ -442,7 +524,7 @@ declare namespace API {
     /** 调用情况描述 */
     msg: string;
     /** 响应的实际数据 */
-    data: null;
+    data: any;
   };
 
   type RFastUploadDto = {

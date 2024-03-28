@@ -4,7 +4,7 @@ import { request } from "@umijs/max";
 
 /** 后台账户获取个人信息 根据token获取个人信息 GET /api/account/info */
 export async function accountControllerGetInfoByToken(options?: { [key: string]: any }) {
-  return request<API.ResponseDto & { data: API.AccountInfoDto }>("/api/account/info", {
+  return request<API.ResponseDto & { data?: API.AccountInfoDto }>("/api/account/info", {
     method: "GET",
     ...(options || {}),
   });

@@ -1,5 +1,5 @@
 import { LockOutlined, MediumOutlined } from "@ant-design/icons";
-import { ProFormCaptcha,ProFormText } from "@ant-design/pro-components";
+import { ProFormCaptcha, ProFormText } from "@ant-design/pro-components";
 import { FormattedMessage } from "@umijs/max";
 
 import { EmailRegex } from "@/constants";

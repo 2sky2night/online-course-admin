@@ -1,9 +1,10 @@
 import { LinkOutlined } from "@ant-design/icons";
 import { UserOutlined } from "@ant-design/icons";
 import type { Settings as LayoutSettings } from "@ant-design/pro-components";
-import { history, Link, RunTimeLayoutConfig, SelectLang } from "@umijs/max";
+import { history, Link, Navigate, RunTimeLayoutConfig, SelectLang } from "@umijs/max";
 
 import defaultSettings from "../config/defaultSettings";
+import { NoLoginWhitelist } from "./constants";
 import { AvatarDropdown } from "./layouts/components/Header/AvatarDropdown";
 import { Theme } from "./layouts/components/Header/RightContent";
 import { errorConfig } from "./requestErrorConfig";
@@ -21,13 +22,15 @@ export async function getInitialState(): Promise<InitialState> {
   let account: null | Account = null;
   const token = Token.getToken();
   if (token === null) {
-    // 无token，去登录页
-    // TODO 申请注册页会被拦截到这里，处理下
-    history.push("/login");
+    if (NoLoginWhitelist.includes(history.location.pathname) === false) {
+      // 未登录用户访问了非白名单路径，返回登录页，避免直接403
+      history.replace("/login");
+    }
   } else {
+    // 登录用户
     try {
       const { data } = await getAccountInfo();
-      account = data; // 获取用户数据成功，保存在全局
+      account = data as Account; // 获取用户数据成功，保存在全局
     } catch {
       // 获取失败，无任何操作，处理交给errorHandler
     }
@@ -93,8 +96,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
         ]
       : [],
     menuHeaderRender: false,
-    ...initialState?.settings,
     navTheme: initialState?.config.isDark ? "realDark" : "light",
+    unAccessible: <Navigate to="/403" />, // 无权限拦截到403页面
+    ...initialState?.settings,
   };
 };
 

@@ -1,5 +1,5 @@
 import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
-import { FormattedMessage, history,useModel } from "@umijs/max";
+import { FormattedMessage, history, useModel } from "@umijs/max";
 import { Modal } from "antd";
 import type { MenuInfo } from "rc-menu/lib/interface";
 import React, { useCallback, useState } from "react";
