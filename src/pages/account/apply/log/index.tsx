@@ -8,7 +8,7 @@ import { ApplyAccount, Approval, PageParamsP } from "@/types";
 
 import { ApplyForm } from "./components";
 import { colunmsRender } from "./config";
-import { ListResponse } from "./types";
+import { ApprovalListResponse as ListResponse } from "./types";
 
 export default function ApplyLogPage() {
   const { t } = useI18n();
@@ -27,7 +27,7 @@ export default function ApplyLogPage() {
     setApply(apply);
   };
   // 表格列配置项(永久缓存)
-  const colunms = useMemo(() => colunmsRender(handleOpenModal), []);
+  const colunms = useMemo(() => colunmsRender(handleOpenModal as any), []);
   return (
     <>
       <Modal

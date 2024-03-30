@@ -12,4 +12,6 @@ export default {
   "global.action": "操作",
   "global.info": "查看",
   "global.role": "角色",
+  "global.edit": "编辑",
+  "global.delete": "删除",
 };

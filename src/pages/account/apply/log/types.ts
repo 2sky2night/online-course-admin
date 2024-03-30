@@ -1,7 +1,7 @@
 /**
  * 审批注册记录
  */
-export type ListResponse = Required<
+export type ApprovalListResponse = Required<
   API.ResponseDto & {
     data: {
       list: API.ApprovalLogInfoDto[];

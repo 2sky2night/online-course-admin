@@ -66,6 +66,58 @@ export default [
           },
         ],
       },
+      {
+        // 视频
+        path: "/video",
+        name: "video",
+        routes: [
+          {
+            // 视频
+            path: "base",
+            name: "base",
+            routes: [
+              {
+                // 视频管理
+                path: "manage",
+                component: "./video/base/manage",
+                name: "manage",
+              },
+              {
+                // 视频详情
+                path: "info/:video_id",
+                component: "./home",
+                name: "info",
+                // 隐藏自己和子菜单
+                hideInMenu: true,
+              },
+              {
+                // 视频创建
+                path: "create",
+                component: "./home",
+                name: "create",
+                // 隐藏自己和子菜单
+                hideInMenu: true,
+                access: "isTeacher", // 老师可见
+              },
+              {
+                // 视频编辑
+                path: "edit/:video_id",
+                component: "./home",
+                name: "edit",
+                hideInMenu: true,
+                access: "isTeacher", // 老师可见
+              },
+              {
+                // 视频上传
+                path: "upload",
+                component: "./home",
+                name: "upload",
+                access: "isTeacher", // 老师可见
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
   {

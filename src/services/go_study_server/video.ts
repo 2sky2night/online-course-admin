@@ -1,16 +1,16 @@
 // @ts-ignore
 /* eslint-disable */
-import { request } from '@umijs/max';
+import { request } from "@umijs/max";
 
 /** 老师发布视频 老师发布视频 POST /api/video */
 export async function videoControllerPublishVideo(
   body: API.PublishVideoDto,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResponseEmptyDto>('/api/video', {
-    method: 'POST',
+  return request<API.ResponseEmptyDto>("/api/video", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -26,9 +26,9 @@ export async function videoControllerUpdateInfo(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -45,9 +45,9 @@ export async function videoControllerAddHistory(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/history`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -63,7 +63,7 @@ export async function videoControllerRemoveHistory(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/history`, {
-    method: 'DELETE',
+    method: "DELETE",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -77,7 +77,7 @@ export async function videoControllerAddLike(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/like`, {
-    method: 'POST',
+    method: "POST",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -91,7 +91,7 @@ export async function videoControllerRemoveLike(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/like`, {
-    method: 'DELETE',
+    method: "DELETE",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -106,9 +106,9 @@ export async function videoControllerUpdateVideoPartition(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/partition`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -124,7 +124,7 @@ export async function videoControllerGetVideoStatus(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseDto & { data?: API.RVideoWatchCount }>(`/api/video/${param0}/status`, {
-    method: 'GET',
+    method: "GET",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -139,9 +139,9 @@ export async function videoControllerAddVideoTags(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/tags`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -158,9 +158,9 @@ export async function videoControllerRemoveVideoTags(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/tags`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -176,7 +176,7 @@ export async function videoControllerViewsCount(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseDto & { data?: API.RVideoViewsCount }>(`/api/video/${param0}/views`, {
-    method: 'GET',
+    method: "GET",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -190,7 +190,7 @@ export async function videoControllerAddViews(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/views`, {
-    method: 'POST',
+    method: "POST",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -204,7 +204,7 @@ export async function videoControllerVideoWatchCount(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseDto & { data?: API.RVideoWatchCount }>(`/api/video/${param0}/watch`, {
-    method: 'GET',
+    method: "GET",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -218,7 +218,7 @@ export async function videoControllerWatchVideo(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/watch`, {
-    method: 'POST',
+    method: "POST",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -232,7 +232,7 @@ export async function videoControllerDecWatchVideo(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/${param0}/watch`, {
-    method: 'DELETE',
+    method: "DELETE",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -246,7 +246,7 @@ export async function videoControllerInfo(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<API.ResponseDto & { data?: API.RVideoInfoDto }>(`/api/video/info/${param0}`, {
-    method: 'GET',
+    method: "GET",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -259,9 +259,11 @@ export async function videoControllerList(
   options?: { [key: string]: any },
 ) {
   return request<
-    API.ResponseDto & { data?: { list?: API.VideoDto[]; total?: number; has_more?: boolean } }
-  >('/api/video/list', {
-    method: 'GET',
+    API.ResponseDto & {
+      data?: { list?: API.RVideoListItemDto[]; total?: number; has_more?: boolean };
+    }
+  >("/api/video/list", {
+    method: "GET",
     params: {
       ...params,
     },
@@ -279,7 +281,7 @@ export async function videoControllerPartitionList(
   return request<
     API.ResponseDto & { data?: { list?: API.VideoDto[]; total?: number; has_more?: boolean } }
   >(`/api/video/list/partition/${param0}`, {
-    method: 'GET',
+    method: "GET",
     params: {
       ...queryParams,
     },

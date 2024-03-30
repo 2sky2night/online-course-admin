@@ -28,7 +28,7 @@ const roleMap = {
 /**
  * 渲染角色文本
  */
-export function Role({ value, Component }: Props) {
+export function RoleMessage({ value, Component }: Props) {
   const { t } = useI18n();
   const { id, dv } = roleMap[value];
   if (Component) {

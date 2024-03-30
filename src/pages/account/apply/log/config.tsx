@@ -6,7 +6,9 @@ import { ApprovallStatus } from "@/components";
 import { Action, CreateTime, UpdateTime } from "@/components";
 import type { ApplyAccount, Approval } from "@/types";
 
-type Render = (onClickInfo: (apply: ApplyAccount) => void) => ProColumns<Approval>[];
+type Render = (
+  onClickInfo: (apply: Omit<ApplyAccount, "approval">) => void,
+) => ProColumns<Approval>[];
 
 /**
  * 表单的配置项

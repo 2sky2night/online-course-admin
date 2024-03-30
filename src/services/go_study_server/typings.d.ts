@@ -640,6 +640,27 @@ declare namespace API {
     like: number;
   };
 
+  type RVideoListItemDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 视频id */
+    video_id: number;
+    /** 视频名称 */
+    video_name: string;
+    /** 视频封面 */
+    video_cover: string;
+    /** 视频描述 */
+    description: string;
+    /** 视频时长，秒为单位 */
+    duration: number;
+    /** 发布者信息 */
+    publisher: AccountDto;
+  };
+
   type RVideoViewsCount = {
     /** 视频浏览量 */
     count: number;

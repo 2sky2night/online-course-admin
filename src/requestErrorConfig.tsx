@@ -1,6 +1,5 @@
 ﻿import type { RequestConfig } from "@umijs/max";
 import { FormattedMessage } from "@umijs/max";
-import { history } from "@umijs/max";
 import { message } from "antd";
 
 import type { ResponseError } from "@/types";
@@ -30,7 +29,7 @@ export const errorConfig: RequestConfig = {
         if (response.status === 401) {
           // 401 token无效
           Token.removeToken();
-          history.replace("/login");
+          window.location.assign("/login"); // 刷新页面并跳转到login页
         }
         message.error(response.data.msg);
       } else {

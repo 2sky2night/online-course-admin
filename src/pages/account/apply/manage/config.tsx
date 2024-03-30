@@ -2,11 +2,11 @@ import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage } from "@umijs/max";
 import { Space } from "antd";
 
-import { Action, ApprovallStatus, CreateTime, Role } from "@/components";
+import { Action, ApprovallStatus, CreateTime, RoleMessage as Role } from "@/components";
 import { Roles } from "@/enums";
 import type { ApplyAccount } from "@/types";
 
-import { NoPassBtn,PassBtn } from "./components";
+import { NoPassBtn, PassBtn } from "./components";
 
 type Render = (
   setLoading: (value: boolean) => void,

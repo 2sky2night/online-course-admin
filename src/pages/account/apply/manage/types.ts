@@ -1,7 +1,7 @@
 /**
  * 申请注册记录
  */
-export type ListResponse = Required<
+export type ApplyListResponse = Required<
   API.ResponseDto & {
     data: {
       list: API.ApplyRegisterInfoDto[];

@@ -7,7 +7,7 @@ import { authAccountControllerGetApplyList as applyList } from "@/services/go_st
 import type { ApplyAccount, PageParamsP } from "@/types";
 
 import { colunmsRender } from "./config";
-import { ListResponse } from "./types";
+import { ApplyListResponse as ListResponse } from "./types";
 
 export default function ApplyManagePage() {
   const { t } = useI18n();
