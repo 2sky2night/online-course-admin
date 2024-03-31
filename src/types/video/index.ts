@@ -17,3 +17,8 @@ export type VideoSource = API.SourceDto;
  * 视频合集信息（包含了创建人）
  */
 export type VideoCollection = API.CollectionDtoA;
+
+/**
+ * 视频合集详情信息
+ */
+export type VideoCollectionInfo = VideoCollection;

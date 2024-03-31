@@ -1,6 +1,6 @@
 import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage, history } from "@umijs/max";
-import { Button, message,Space } from "antd";
+import { Button, message, Space } from "antd";
 
 import { Action, Avatar, CreateTime, Image, UpdateTime, VideoPermission } from "@/components";
 import type { VideoCollection } from "@/types";
@@ -16,6 +16,18 @@ export const colunmsRender: Render = () => [
     title: "id",
     valueType: "index",
     search: false,
+    render: (_, { collection_id }) => {
+      return (
+        <Button
+          type="link"
+          onClick={() => {
+            history.push("/video/collection/info/" + collection_id);
+          }}
+        >
+          {collection_id}
+        </Button>
+      );
+    },
   },
   {
     dataIndex: "collection_name",
@@ -61,37 +73,29 @@ export const colunmsRender: Render = () => [
   {
     valueType: "option",
     title: <Action />,
-    render(_, { collection_id, creator: { account_id } }) {
+    render(_, { creator: { account_id } }) {
       return (
-        <Space>
-          <Button
-            size="small"
-            onClick={() => history.push("/video/collection/info/" + collection_id)}
-          >
-            <FormattedMessage id="global.info" defaultMessage="查看" />
-          </Button>
-          <VideoPermission
-            creatorId={account_id}
-            toAdmin={false}
-            Component={() => {
-              return (
-                <Space>
-                  <Button size="small" type="primary" onClick={() => message.info("弹出模态框")}>
-                    <FormattedMessage id="global.edit" defaultMessage="编辑" />
-                  </Button>
-                  <Button
-                    size="small"
-                    type="primary"
-                    danger
-                    onClick={() => message.info("二次确认删除")}
-                  >
-                    <FormattedMessage id="global.delete" defaultMessage="删除" />
-                  </Button>
-                </Space>
-              );
-            }}
-          />
-        </Space>
+        <VideoPermission
+          creatorId={account_id}
+          toAdmin={false}
+          Component={() => {
+            return (
+              <Space>
+                <Button size="small" type="primary" onClick={() => message.info("弹出模态框")}>
+                  <FormattedMessage id="global.edit" defaultMessage="编辑" />
+                </Button>
+                <Button
+                  size="small"
+                  type="primary"
+                  danger
+                  onClick={() => message.info("二次确认删除")}
+                >
+                  <FormattedMessage id="global.delete" defaultMessage="删除" />
+                </Button>
+              </Space>
+            );
+          }}
+        />
       );
     },
   },

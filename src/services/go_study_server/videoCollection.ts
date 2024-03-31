@@ -1,16 +1,16 @@
 // @ts-ignore
 /* eslint-disable */
-import { request } from '@umijs/max';
+import { request } from "@umijs/max";
 
 /** 创建一个视频合集 老师创建一个视频合集 POST /api/video/collection */
 export async function videoCollectionControllerPublishCollection(
   body: API.CreateVideoCollectionDto,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResponseEmptyDto>('/api/video/collection', {
-    method: 'POST',
+  return request<API.ResponseEmptyDto>("/api/video/collection", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -26,9 +26,9 @@ export async function videoCollectionControllerUpdateInfo(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -45,9 +45,9 @@ export async function videoCollectionControllerUpdatePartition(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}/partition`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -63,7 +63,7 @@ export async function collectionSubscribeControllerSubscribe(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}/subscribe`, {
-    method: 'POST',
+    method: "POST",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -77,7 +77,7 @@ export async function collectionSubscribeControllerUnsubscribe(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}/subscribe`, {
-    method: 'DELETE',
+    method: "DELETE",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -92,9 +92,9 @@ export async function videoCollectionControllerAddTags(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}/tags`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -111,12 +111,32 @@ export async function videoCollectionControllerRemoveTags(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}/tags`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
+    ...(options || {}),
+  });
+}
+
+/** 获取此合集下的视频列表 获取此合集下的视频列表 GET /api/video/collection/${param0}/videos */
+export async function videoCollectionControllerVideoList(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoCollectionControllerVideoListParams,
+  options?: { [key: string]: any },
+) {
+  const { cid: param0, ...queryParams } = params;
+  return request<
+    API.ResponseDto & {
+      data?: { list?: API.RVideoListItemDto[]; total?: number; has_more?: boolean };
+    }
+  >(`/api/video/collection/${param0}/videos`, {
+    method: "GET",
+    params: {
+      ...queryParams,
+    },
     ...(options || {}),
   });
 }
@@ -130,9 +150,9 @@ export async function videoCollectionControllerAddVideos(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}/videos`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -149,9 +169,9 @@ export async function videoCollectionControllerRemoveVideos(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}/videos`, {
-    method: 'DELETE',
+    method: "DELETE",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -169,7 +189,7 @@ export async function videoCollectionControllerInfo(
   return request<API.ResponseDto & { data?: API.CollectionDtoA }>(
     `/api/video/collection/info/${param0}`,
     {
-      method: 'GET',
+      method: "GET",
       params: { ...queryParams },
       ...(options || {}),
     },
@@ -184,8 +204,8 @@ export async function videoCollectionControllerList(
 ) {
   return request<
     API.ResponseDto & { data?: { list?: API.CollectionDtoA[]; total?: number; has_more?: boolean } }
-  >('/api/video/collection/list', {
-    method: 'GET',
+  >("/api/video/collection/list", {
+    method: "GET",
     params: {
       ...params,
     },
@@ -203,7 +223,7 @@ export async function videoCollectionControllerPartitionList(
   return request<
     API.ResponseDto & { data?: { list?: API.CollectionDto[]; total?: number; has_more?: boolean } }
   >(`/api/video/collection/list/partition/${param0}`, {
-    method: 'GET',
+    method: "GET",
     params: {
       ...queryParams,
     },
@@ -219,8 +239,8 @@ export async function collectionSubscribeControllerSubscribeList(
 ) {
   return request<
     API.ResponseDto & { data?: { list?: API.CollectionDtoA[]; total?: number; has_more?: boolean } }
-  >('/api/video/collection/user/subscribes', {
-    method: 'GET',
+  >("/api/video/collection/user/subscribes", {
+    method: "GET",
     params: {
       ...params,
     },

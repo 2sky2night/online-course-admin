@@ -7,8 +7,8 @@ import { Props } from "./types";
 /**
  * 渲染视频表格
  */
-export default function VideoTable<T>({ request }: Props<T>) {
-  const columns = useMemo(() => colunmsRender(), []);
+export default function VideoTable<T>({ request, tableProps, extraColumsList }: Props<T>) {
+  const columns = useMemo(() => colunmsRender(extraColumsList), []);
   return (
     <ProTable
       rowKey="video_id"
@@ -24,6 +24,7 @@ export default function VideoTable<T>({ request }: Props<T>) {
           total,
         };
       }}
+      {...(tableProps as any)}
     />
   );
 }

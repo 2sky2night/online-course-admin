@@ -30,4 +30,5 @@ export default {
   "global.reset": "重置",
   "global.action.ok": "操作成功",
   "global.input.error.required": "请输入内容!",
+  "global.remove": "移除",
 };

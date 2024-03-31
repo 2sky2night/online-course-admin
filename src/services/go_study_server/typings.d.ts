@@ -820,6 +820,13 @@ declare namespace API {
     cid: number;
   };
 
+  type VideoCollectionControllerVideoListParams = {
+    cid: number;
+    offset: number;
+    limit: number;
+    desc: boolean;
+  };
+
   type VideoCommentControllerAddCommentLikeParams = {
     cid: number;
   };

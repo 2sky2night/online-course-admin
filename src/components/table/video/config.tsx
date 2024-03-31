@@ -1,20 +1,33 @@
 import type { ProColumns } from "@ant-design/pro-components";
-import { FormattedMessage } from "@umijs/max";
+import { FormattedMessage, history } from "@umijs/max";
+import { Button } from "antd";
 
 import { CreateTime, Image, UpdateTime } from "@/components";
 import type { VideoItem } from "@/types";
 
-type Render = () => ProColumns<VideoItem>[];
+type Render = (extraList?: ProColumns<VideoItem>[]) => ProColumns<VideoItem>[];
 
 /**
  * 表单的配置项
  */
-export const colunmsRender: Render = () => [
+export const colunmsRender: Render = (extraList = []) => [
   {
     dataIndex: "video_id",
     title: "id",
     search: false,
     width: "80px",
+    render: (_, { video_id }) => {
+      return (
+        <Button
+          type="link"
+          onClick={() => {
+            history.push("/video/base/info/" + video_id);
+          }}
+        >
+          {video_id}
+        </Button>
+      );
+    },
   },
   {
     dataIndex: "video_name",
@@ -51,4 +64,5 @@ export const colunmsRender: Render = () => [
     valueType: "dateTime",
     title: <UpdateTime />,
   },
+  ...extraList,
 ];

@@ -42,7 +42,7 @@ export default function VideoCollectionManagePage() {
           } = (await collectionList({
             offset: (current - 1) * pageSize,
             limit: pageSize,
-            desc: false,
+            desc: true,
           })) as ListResponse;
           return {
             data: list,

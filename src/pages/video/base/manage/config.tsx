@@ -17,6 +17,18 @@ export const colunmsRender: Render = () => [
     title: "id",
     search: false,
     width: "80px",
+    render: (_, { video_id }) => {
+      return (
+        <Button
+          type="link"
+          onClick={() => {
+            history.push("/video/base/info/" + video_id);
+          }}
+        >
+          {video_id}
+        </Button>
+      );
+    },
   },
   {
     dataIndex: "video_name",
@@ -58,34 +70,29 @@ export const colunmsRender: Render = () => [
     title: <Action />,
     render(_, { video_id, publisher: { account_id } }) {
       return (
-        <Space>
-          <Button size="small" onClick={() => history.push("/video/base/info/" + video_id)}>
-            <FormattedMessage id="global.info" defaultMessage="查看" />
-          </Button>
-          <VideoPermission
-            creatorId={account_id}
-            toAdmin
-            Component={() => (
-              <Space>
-                <Role
-                  roles={[Roles.TEACHER]}
-                  Component={() => (
-                    <Button
-                      size="small"
-                      type="primary"
-                      onClick={() => history.push("/video/base/edit/" + video_id)}
-                    >
-                      <FormattedMessage id="global.edit" defaultMessage="编辑" />
-                    </Button>
-                  )}
-                />
-                <Button size="small" danger type="primary">
-                  <FormattedMessage id="global.delete" defaultMessage="删除" />
-                </Button>
-              </Space>
-            )}
-          />
-        </Space>
+        <VideoPermission
+          creatorId={account_id}
+          toAdmin
+          Component={() => (
+            <Space>
+              <Role
+                roles={[Roles.TEACHER]}
+                Component={() => (
+                  <Button
+                    size="small"
+                    type="primary"
+                    onClick={() => history.push("/video/base/edit/" + video_id)}
+                  >
+                    <FormattedMessage id="global.edit" defaultMessage="编辑" />
+                  </Button>
+                )}
+              />
+              <Button size="small" danger type="primary">
+                <FormattedMessage id="global.delete" defaultMessage="删除" />
+              </Button>
+            </Space>
+          )}
+        />
       );
     },
   },
