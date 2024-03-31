@@ -85,7 +85,7 @@ export default [
               {
                 // 视频详情
                 path: "info/:video_id",
-                component: "./home",
+                component: "./video/base/info",
                 name: "info",
                 // 隐藏自己和子菜单
                 hideInMenu: true,

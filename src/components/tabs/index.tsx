@@ -31,6 +31,11 @@ export interface TabsProps<Keys> {
 }
 
 /**
+ * tab项的配置类型定义
+ */
+export type TabItem<Keys> = TabsProps<Keys>["items"];
+
+/**
  * 和查询参数绑定的tabs
  * @returns
  */

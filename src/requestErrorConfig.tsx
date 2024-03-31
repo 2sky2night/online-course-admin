@@ -1,4 +1,4 @@
-﻿import type { RequestConfig } from "@umijs/max";
+﻿import { history,RequestConfig } from "@umijs/max";
 import { FormattedMessage } from "@umijs/max";
 import { message } from "antd";
 
@@ -23,13 +23,16 @@ export const errorConfig: RequestConfig = {
       return Promise.reject(errorResult);
     },
     errorHandler(error) {
-      // TODO 完成请求错误处理 404、403处理
       const { response } = error as AxiosError<ResponseError>;
       if (response?.data) {
         if (response.status === 401) {
           // 401 token无效
           Token.removeToken();
           window.location.assign("/login"); // 刷新页面并跳转到login页
+        } else if (response.status === 404) {
+          history.replace("/404"); // 资源不存在，跳转到404页
+        } else if (response.status === 403) {
+          history.replace("/403"); // 无权限调用接口(页面鉴权漏了，还可以从全局跳转)，跳转到403页
         }
         message.error(response.data.msg);
       } else {

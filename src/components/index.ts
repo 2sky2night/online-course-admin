@@ -1,7 +1,10 @@
 import I18n from "./i18n";
-import Image from "./img";
 import Role from "./role";
 import Tabs from "./tabs";
-export { I18n as I, Image, Role,Tabs };
+import Title from "./title";
+import Video from "./video";
+export { I18n as I, Role, Tabs, Title, Video };
+export * from "./form";
+export * from "./img";
 export * from "./message";
 export * from "./permission";

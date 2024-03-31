@@ -634,10 +634,8 @@ declare namespace API {
     source: SourceDto[];
     /** 视频标签信息 */
     tags: TagDto[];
-    /** 视频观看次数 */
-    views: number;
-    /** 视频点赞数 */
-    like: number;
+    /** 视频动态信息 */
+    count: VideoDataCountDto;
   };
 
   type RVideoListItemDto = {
@@ -918,6 +916,15 @@ declare namespace API {
     vid: number;
     start: number;
     end: number;
+  };
+
+  type VideoDataCountDto = {
+    /** 视频观看次数 */
+    views: number;
+    /** 视频点赞数 */
+    likes: number;
+    /** 视频收藏数 */
+    stars: number;
   };
 
   type VideoDto = {
