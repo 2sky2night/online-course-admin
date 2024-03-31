@@ -89,30 +89,55 @@ export default [
                 name: "info",
                 // 隐藏自己和子菜单
                 hideInMenu: true,
+                parentKeys: ["/video/base/manage"], // 激活管理菜单
               },
               {
                 // 视频创建
                 path: "create",
-                component: "./home",
+                component: "./video/base/create",
                 name: "create",
                 // 隐藏自己和子菜单
                 hideInMenu: true,
                 access: "isTeacher", // 老师可见
+                parentKeys: ["/video/base/manage"], // 激活管理菜单
               },
               {
                 // 视频编辑
                 path: "edit/:video_id",
-                component: "./home",
+                component: "./video/base/edit",
                 name: "edit",
                 hideInMenu: true,
                 access: "isTeacher", // 老师可见
+                parentKeys: ["/video/base/manage"], // 激活管理菜单
               },
               {
                 // 视频上传
                 path: "upload",
-                component: "./home",
+                component: "./video/base/upload",
                 name: "upload",
                 access: "isTeacher", // 老师可见
+              },
+            ],
+          },
+          {
+            // 视频合集
+            path: "collection",
+            name: "collection",
+            routes: [
+              {
+                // 合集管理
+                path: "manage",
+                component: "./video/collection/manage",
+                name: "manage",
+              },
+              {
+                // 合集详情
+                path: "info/:collection_id",
+                component: "./video/collection/info",
+                name: "manage",
+                // 隐藏自己和子菜单
+                hideInMenu: true,
+                parentKeys: ["/video/collection/manage"], // 激活管理菜单
               },
             ],
           },

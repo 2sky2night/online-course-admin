@@ -29,7 +29,7 @@ export default function VideoPage() {
             roles={[Roles.TEACHER]}
             Component={() => (
               <Button type="primary" onClick={() => history.push("/video/base/create")}>
-                创建视频
+                {t("pages.video.base.manage.create", "创建视频")}
               </Button>
             )}
           />,

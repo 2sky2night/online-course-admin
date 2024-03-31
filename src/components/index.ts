@@ -8,3 +8,4 @@ export * from "./form";
 export * from "./img";
 export * from "./message";
 export * from "./permission";
+export * from "./table";

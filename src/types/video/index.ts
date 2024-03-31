@@ -12,3 +12,8 @@ export type VideoInfo = API.RVideoInfoDto;
  * 视频播放源
  */
 export type VideoSource = API.SourceDto;
+
+/**
+ * 视频合集信息（包含了创建人）
+ */
+export type VideoCollection = API.CollectionDtoA;

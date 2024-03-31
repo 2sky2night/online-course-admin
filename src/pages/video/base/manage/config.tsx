@@ -63,7 +63,7 @@ export const colunmsRender: Render = () => [
             <FormattedMessage id="global.info" defaultMessage="查看" />
           </Button>
           <VideoPermission
-            pubsherId={account_id}
+            creatorId={account_id}
             toAdmin
             Component={() => (
               <Space>
