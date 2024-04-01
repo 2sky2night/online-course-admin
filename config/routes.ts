@@ -141,6 +141,27 @@ export default [
               },
             ],
           },
+          {
+            // 视频分区
+            path: "partition",
+            name: "partition",
+            routes: [
+              {
+                // 视频分区管理
+                path: "manage",
+                component: "./video/partition/manage",
+                name: "manage",
+              },
+              {
+                // 视频分区详情
+                path: "info/:partition_id",
+                component: "./video/partition/info",
+                name: "manage",
+                hideInMenu: true,
+                parentKeys: ["/video/partition/manage"],
+              },
+            ],
+          },
         ],
       },
     ],

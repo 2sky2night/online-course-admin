@@ -22,3 +22,8 @@ export type VideoCollection = API.CollectionDtoA;
  * 视频合集详情信息
  */
 export type VideoCollectionInfo = VideoCollection;
+
+/**
+ * 视频分区列表项
+ */
+export type VideoPartitionItem = API.PartitionInfoDto;

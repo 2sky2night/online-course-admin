@@ -279,7 +279,9 @@ export async function videoControllerPartitionList(
 ) {
   const { pid: param0, ...queryParams } = params;
   return request<
-    API.ResponseDto & { data?: { list?: API.VideoDto[]; total?: number; has_more?: boolean } }
+    API.ResponseDto & {
+      data?: { list?: API.RVideoListItemDto[]; total?: number; has_more?: boolean };
+    }
   >(`/api/video/list/partition/${param0}`, {
     method: "GET",
     params: {

@@ -1,2 +1,3 @@
+import VideoCollectionTable from "./collection";
 import VideoTable from "./video";
-export { VideoTable };
+export { VideoCollectionTable,VideoTable };

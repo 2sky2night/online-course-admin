@@ -18,7 +18,7 @@ export default function VideoCollectionManagePage() {
   return (
     <>
       <ProTable<VideoCollection, PageParamsP>
-        headerTitle={t("pages.video.collection.title", "视频合集")}
+        headerTitle={t("pages.video.collection.title", "视频合集管理")}
         rowKey="collection_id"
         toolBarRender={(d) => {
           const refresh = () => {

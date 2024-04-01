@@ -1,16 +1,16 @@
 // @ts-ignore
 /* eslint-disable */
-import { request } from '@umijs/max';
+import { request } from "@umijs/max";
 
 /** 创建标签 后台账户创建标签 POST /api/video/tag */
 export async function videoTagControllerAddTag(
   body: API.CreateTagDto,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResponseEmptyDto>('/api/video/tag', {
-    method: 'POST',
+  return request<API.ResponseEmptyDto>("/api/video/tag", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -26,9 +26,9 @@ export async function videoTagControllerUpdateTag(
 ) {
   const { tid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/tag/${param0}`, {
-    method: 'PATCH',
+    method: "PATCH",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     params: { ...queryParams },
     data: body,
@@ -44,9 +44,9 @@ export async function videoTagControllerCollectionList(
 ) {
   const { tid: param0, ...queryParams } = params;
   return request<
-    API.ResponseDto & { data?: { list?: API.CollectionDto[]; total?: number; has_more?: boolean } }
+    API.ResponseDto & { data?: { list?: API.CollectionDtoA[]; total?: number; has_more?: boolean } }
   >(`/api/video/tag/${param0}/collection`, {
-    method: 'GET',
+    method: "GET",
     params: {
       ...queryParams,
     },
@@ -62,9 +62,11 @@ export async function videoTagControllerVideoList(
 ) {
   const { tid: param0, ...queryParams } = params;
   return request<
-    API.ResponseDto & { data?: { list?: API.VideoDto[]; total?: number; has_more?: boolean } }
+    API.ResponseDto & {
+      data?: { list?: API.RVideoListItemDto[]; total?: number; has_more?: boolean };
+    }
   >(`/api/video/tag/${param0}/videos`, {
-    method: 'GET',
+    method: "GET",
     params: {
       ...queryParams,
     },
@@ -79,9 +81,9 @@ export async function videoTagControllerList(
   options?: { [key: string]: any },
 ) {
   return request<
-    API.ResponseDto & { data?: { list?: API.TagDto[]; total?: number; has_more?: boolean } }
-  >('/api/video/tag/list', {
-    method: 'GET',
+    API.ResponseDto & { data?: { list?: API.TagInfoDto[]; total?: number; has_more?: boolean } }
+  >("/api/video/tag/list", {
+    method: "GET",
     params: {
       ...params,
     },

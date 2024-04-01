@@ -1,16 +1,16 @@
 import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage, history } from "@umijs/max";
-import { Button, message, Space } from "antd";
+import { Button } from "antd";
 
-import { Action, Avatar, CreateTime, Image, UpdateTime, VideoPermission } from "@/components";
+import { Avatar, CreateTime, Image, UpdateTime } from "@/components";
 import type { VideoCollection } from "@/types";
 
-type Render = () => ProColumns<VideoCollection>[];
+type Render = (extraList?: ProColumns<VideoCollection>[]) => ProColumns<VideoCollection>[];
 
 /**
  * 表单的配置项
  */
-export const colunmsRender: Render = () => [
+export const colunmsRender: Render = (extraList = []) => [
   {
     dataIndex: "collection_id",
     title: "id",
@@ -70,33 +70,5 @@ export const colunmsRender: Render = () => [
       return <Avatar src={creator.avatar} username={creator.account_name} />;
     },
   },
-  {
-    valueType: "option",
-    title: <Action />,
-    render(_, { creator: { account_id } }) {
-      return (
-        <VideoPermission
-          creatorId={account_id}
-          toAdmin={false}
-          Component={() => {
-            return (
-              <Space>
-                <Button size="small" type="primary" onClick={() => message.info("弹出模态框")}>
-                  <FormattedMessage id="global.edit" defaultMessage="编辑" />
-                </Button>
-                <Button
-                  size="small"
-                  type="primary"
-                  danger
-                  onClick={() => message.info("二次确认删除")}
-                >
-                  <FormattedMessage id="global.delete" defaultMessage="删除" />
-                </Button>
-              </Space>
-            );
-          }}
-        />
-      );
-    },
-  },
+  ...extraList,
 ];

@@ -437,6 +437,21 @@ declare namespace API {
     partition_name: string;
   };
 
+  type PartitionInfoDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 分区ID */
+    partition_id: number;
+    /** 分区名称 */
+    partition_name: string;
+    /** 发布者信息 */
+    account: AccountDto;
+  };
+
   type PublishVideoDto = {
     /** 视频名称 */
     video_name: string;
@@ -695,6 +710,21 @@ declare namespace API {
     tag_id: number;
     /** 标签名称 */
     tag_name: string;
+  };
+
+  type TagInfoDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 标签ID */
+    tag_id: number;
+    /** 标签名称 */
+    tag_name: string;
+    /** 发布者信息 */
+    account: AccountDto;
   };
 
   type UpdateAccountPasswordDto = {
@@ -987,6 +1017,10 @@ declare namespace API {
     limit: number;
     desc: boolean;
     video_id: number;
+  };
+
+  type VideoPartitionControllerInfoParams = {
+    pid: number;
   };
 
   type VideoPartitionControllerListParams = {
