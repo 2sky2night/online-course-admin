@@ -17,6 +17,20 @@ export async function videoTagControllerAddTag(
   });
 }
 
+/** 获取标签的详情信息 获取标签的详情信息 GET /api/video/tag/${param0} */
+export async function videoTagControllerInfo(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoTagControllerInfoParams,
+  options?: { [key: string]: any },
+) {
+  const { tid: param0, ...queryParams } = params;
+  return request<API.ResponseDto & { data?: API.TagInfoDto }>(`/api/video/tag/${param0}`, {
+    method: "GET",
+    params: { ...queryParams },
+    ...(options || {}),
+  });
+}
+
 /** 更新标签 后台账户更新标签 PATCH /api/video/tag/${param0} */
 export async function videoTagControllerUpdateTag(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

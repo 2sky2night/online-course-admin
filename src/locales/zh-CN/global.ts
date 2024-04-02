@@ -32,4 +32,5 @@ export default {
   "global.input.error.required": "请输入内容!",
   "global.remove": "移除",
   "global.partition.name": "分区名",
+  "global.tag.name": "标签名",
 };

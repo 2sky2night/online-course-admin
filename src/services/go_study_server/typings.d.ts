@@ -1038,6 +1038,10 @@ declare namespace API {
     desc: boolean;
   };
 
+  type VideoTagControllerInfoParams = {
+    tid: number;
+  };
+
   type VideoTagControllerListParams = {
     offset: number;
     limit: number;

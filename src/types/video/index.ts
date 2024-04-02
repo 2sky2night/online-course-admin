@@ -34,6 +34,16 @@ export type VideoPartitionItem = API.PartitionInfoDto;
 export type VideoPartitionInfo = VideoPartitionItem;
 
 /**
+ * 视频标签列表项
+ */
+export type VideoTagItem = API.TagInfoDto;
+
+/**
+ * 视频标签详情信息
+ */
+export type VideoTagInfo = VideoTagItem;
+
+/**
  * 视频列表的响应信息
  */
 export type VideoListRepsonse = API.ResponseDto & {

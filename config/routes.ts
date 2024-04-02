@@ -134,7 +134,7 @@ export default [
                 // 合集详情
                 path: "info/:collection_id",
                 component: "./video/collection/info",
-                name: "manage",
+                name: "info",
                 // 隐藏自己和子菜单
                 hideInMenu: true,
                 parentKeys: ["/video/collection/manage"], // 激活管理菜单
@@ -156,9 +156,30 @@ export default [
                 // 视频分区详情
                 path: "info/:partition_id",
                 component: "./video/partition/info",
-                name: "manage",
+                name: "info",
                 hideInMenu: true,
                 parentKeys: ["/video/partition/manage"],
+              },
+            ],
+          },
+          {
+            // 视频标签
+            path: "tag",
+            name: "tag",
+            routes: [
+              {
+                // 视频分区管理
+                path: "manage",
+                component: "./video/tag/manage",
+                name: "manage",
+              },
+              {
+                // 视频分区详情
+                path: "info/:tag_id",
+                component: "./video/tag/info",
+                name: "tag",
+                hideInMenu: true,
+                parentKeys: ["/video/tag/manage"],
               },
             ],
           },
