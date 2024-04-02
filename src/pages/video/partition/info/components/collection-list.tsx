@@ -7,7 +7,7 @@ interface Props {
 }
 
 /**
- * 视频集合列表
+ * 视频合集列表
  */
 export default function PartitionVideoCollectionList({ pid }: Props) {
   return (

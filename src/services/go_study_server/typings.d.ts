@@ -187,13 +187,13 @@ declare namespace API {
     updated_time: string;
     /** 删除时间 */
     deleted_time: string;
-    /** 集合ID */
+    /** 合集ID */
     collection_id: number;
-    /** 集合名称 */
+    /** 合集名称 */
     collection_name: string;
     /** 描述 */
     description: string;
-    /** 集合封面 */
+    /** 合集封面 */
     collection_cover: string;
     /** 创建者 */
     creator: AccountDto;
