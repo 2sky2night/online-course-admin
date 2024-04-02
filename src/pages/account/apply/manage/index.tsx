@@ -34,7 +34,7 @@ export default function ApplyManagePage() {
         } = (await applyList({
           offset: (current - 1) * pageSize,
           limit: pageSize,
-          desc: false,
+          desc: true,
         })) as ListResponse;
         return {
           data: list,

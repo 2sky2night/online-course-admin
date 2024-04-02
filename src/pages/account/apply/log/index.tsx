@@ -49,7 +49,7 @@ export default function ApplyLogPage() {
           } = (await approvalList({
             offset: (current - 1) * pageSize,
             limit: pageSize,
-            desc: false,
+            desc: true,
           })) as ListResponse;
           return {
             data: list,

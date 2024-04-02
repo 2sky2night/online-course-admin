@@ -41,7 +41,7 @@ export default function PartitionManagePage() {
         } = (await partitionList({
           offset: (current - 1) * pageSize,
           limit: pageSize,
-          desc: false,
+          desc: true,
         })) as ListResponse;
         return {
           data: list,

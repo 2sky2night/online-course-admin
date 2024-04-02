@@ -42,7 +42,7 @@ export default function VideoPage() {
         } = (await videList({
           offset: (current - 1) * pageSize,
           limit: pageSize,
-          desc: false,
+          desc: true,
         })) as VideoListResponse;
         return {
           data: list,

@@ -27,3 +27,30 @@ export type VideoCollectionInfo = VideoCollection;
  * 视频分区列表项
  */
 export type VideoPartitionItem = API.PartitionInfoDto;
+
+/**
+ * 视频分区详情信息
+ */
+export type VideoPartitionInfo = VideoPartitionItem;
+
+/**
+ * 视频列表的响应信息
+ */
+export type VideoListRepsonse = API.ResponseDto & {
+  data: {
+    list: API.RVideoListItemDto[];
+    total: number;
+    has_more: boolean;
+  };
+};
+
+/**
+ * 视频合集列表的响应信息
+ */
+export type VideoCollectionResposne = API.ResponseDto & {
+  data: {
+    list: API.CollectionDtoA[];
+    total: number;
+    has_more: boolean;
+  };
+};

@@ -180,23 +180,6 @@ declare namespace API {
     file_hash: string;
   };
 
-  type CollectionDto = {
-    /** 创建时间 */
-    created_time: string;
-    /** 更新时间 */
-    updated_time: string;
-    /** 删除时间 */
-    deleted_time: string;
-    /** 集合ID */
-    collection_id: number;
-    /** 集合名称 */
-    collection_name: string;
-    /** 描述 */
-    description: string;
-    /** 集合封面 */
-    collection_cover: string;
-  };
-
   type CollectionDtoA = {
     /** 创建时间 */
     created_time: string;

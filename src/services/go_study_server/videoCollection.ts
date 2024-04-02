@@ -221,7 +221,7 @@ export async function videoCollectionControllerPartitionList(
 ) {
   const { pid: param0, ...queryParams } = params;
   return request<
-    API.ResponseDto & { data?: { list?: API.CollectionDto[]; total?: number; has_more?: boolean } }
+    API.ResponseDto & { data?: { list?: API.CollectionDtoA[]; total?: number; has_more?: boolean } }
   >(`/api/video/collection/list/partition/${param0}`, {
     method: "GET",
     params: {
