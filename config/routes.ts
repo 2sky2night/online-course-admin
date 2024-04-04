@@ -189,9 +189,22 @@ export default [
             name: "comment",
             routes: [
               {
-                // 视频分区管理
+                // 视频评论管理
                 path: "manage",
                 component: "./video/comment/manage",
+                name: "manage",
+              },
+            ],
+          },
+          {
+            // 视频回复
+            path: "reply",
+            name: "reply",
+            routes: [
+              {
+                // 视频回复管理
+                path: "manage",
+                component: "./video/reply/manage",
                 name: "manage",
               },
             ],

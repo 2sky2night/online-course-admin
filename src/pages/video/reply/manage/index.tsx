@@ -2,18 +2,18 @@ import { FormattedMessage } from "@umijs/max";
 import { Button, message } from "antd";
 
 import { Action } from "@/components";
-import { VideoCommentTable } from "@/components";
-import { videoCommentControllerCommonList as commentList } from "@/services/go_study_server/videoComment";
-import { VideoCommentListResponse as ListResponse } from "@/types";
+import { VideoReplyTable } from "@/components";
+import { videoReplyControllerCommonList as replyList } from "@/services/go_study_server/videoReply";
+import { VideoReplyListResponse as ListResponse } from "@/types";
 
 /**
- * 视频评论管理页
+ * 视频回复管理页
  */
-export default function CommentManagePage() {
+export default function ReplyManagePage() {
   return (
-    <VideoCommentTable
+    <VideoReplyTable
       request={(pageSize, page) =>
-        commentList({
+        replyList({
           desc: true,
           offset: (page - 1) * pageSize,
           limit: pageSize,
@@ -21,7 +21,7 @@ export default function CommentManagePage() {
       }
       tableProps={{
         headerTitle: (
-          <FormattedMessage id="pages.video.comment.manage.title" defaultMessage="评论管理" />
+          <FormattedMessage id="pages.video.reply.manage.title" defaultMessage="回复管理" />
         ),
       }}
       extraColumsList={[
