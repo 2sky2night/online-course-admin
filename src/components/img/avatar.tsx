@@ -3,6 +3,7 @@ import { AvatarProps, Space } from "antd";
 import { Avatar as AntdAvatar } from "antd";
 
 import { staticServerUrl } from "@/config";
+import { IsAbsolutePath } from "@/constants";
 
 interface Props {
   /**
@@ -20,17 +21,12 @@ interface Props {
 }
 
 /**
- * 检测是否为绝对路径的正则
- */
-const isAbsolutePath = /^(?:\/|[a-zA-Z]:\\)/;
-
-/**
  * 头像组件
  */
 export default function Avatar({ src, antdProps, username }: Props) {
   if (src) {
     let formateSrc = src;
-    if (isAbsolutePath.test(formateSrc)) {
+    if (IsAbsolutePath.test(formateSrc)) {
       // 若非完整路径，则是内部链接，需要拼接url
       formateSrc = staticServerUrl + src;
     }

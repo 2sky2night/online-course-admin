@@ -187,13 +187,13 @@ declare namespace API {
     updated_time: string;
     /** 删除时间 */
     deleted_time: string;
-    /** 合集ID */
+    /** 集合ID */
     collection_id: number;
-    /** 合集名称 */
+    /** 集合名称 */
     collection_name: string;
     /** 描述 */
     description: string;
-    /** 合集封面 */
+    /** 集合封面 */
     collection_cover: string;
     /** 创建者 */
     creator: AccountDto;
@@ -214,7 +214,7 @@ declare namespace API {
     cid: number;
   };
 
-  type CommentDto = {
+  type CommentDtoA = {
     /** 创建时间 */
     created_time: string;
     /** 更新时间 */
@@ -227,6 +227,8 @@ declare namespace API {
     content: string;
     /** 评论图片 */
     images: string[];
+    /** 评论创建者 */
+    user: UserDto;
   };
 
   type CreateDanmuDto = {
@@ -292,6 +294,23 @@ declare namespace API {
     content: string;
     /** 弹幕时间 */
     time: number;
+  };
+
+  type DanmuDtoA = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 弹幕ID */
+    danmu_id: number;
+    /** 弹幕内容 */
+    content: string;
+    /** 弹幕时间 */
+    time: number;
+    /** 发布弹幕的创建者 */
+    user: UserDto;
   };
 
   type DeleteVideosDto = {
@@ -492,7 +511,7 @@ declare namespace API {
     tag_id_list: number[];
   };
 
-  type ReplyDto = {
+  type ReplyDtoA = {
     /** 创建时间 */
     created_time: string;
     /** 更新时间 */
@@ -507,6 +526,8 @@ declare namespace API {
     images: string[];
     /** 引用的回复id,null为回复的评论，其他为回复的回复 */
     ref_id: number;
+    /** 回复的创建者 */
+    user: UserDto;
   };
 
   type ResponseDto = {
@@ -792,6 +813,27 @@ declare namespace API {
     fid: number;
   };
 
+  type UserDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 用户id */
+    user_id: number;
+    /** 对应平台的用户id */
+    platform_id: string;
+    /** 用户名称 */
+    user_name: string;
+    /** 用户头像 */
+    avatar: string;
+    /** 用户性别 */
+    gender: boolean;
+    /** 用户年龄 */
+    age: number;
+  };
+
   type VideoCollectionControllerAddTagsParams = {
     cid: number;
   };
@@ -842,6 +884,12 @@ declare namespace API {
 
   type VideoCommentControllerAddCommentLikeParams = {
     cid: number;
+  };
+
+  type VideoCommentControllerCommonListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
   };
 
   type VideoCommentControllerListParams = {
@@ -928,8 +976,21 @@ declare namespace API {
     vid: number;
   };
 
+  type VideoDanmuControllerCommonListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
+  };
+
   type VideoDanmuControllerCreateDanmuParams = {
     vid: number;
+  };
+
+  type VideoDanmuControllerDanmuListInVideoParams = {
+    vid: number;
+    offset: number;
+    limit: number;
+    desc: boolean;
   };
 
   type VideoDanmuControllerListParams = {
@@ -1018,6 +1079,12 @@ declare namespace API {
 
   type VideoReplyControllerAddReplyLikeParams = {
     rid: number;
+  };
+
+  type VideoReplyControllerCommonListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
   };
 
   type VideoReplyControllerListParams = {

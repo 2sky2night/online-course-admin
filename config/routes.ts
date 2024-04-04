@@ -183,6 +183,19 @@ export default [
               },
             ],
           },
+          {
+            // 视频评论
+            path: "comment",
+            name: "comment",
+            routes: [
+              {
+                // 视频分区管理
+                path: "manage",
+                component: "./video/comment/manage",
+                name: "manage",
+              },
+            ],
+          },
         ],
       },
     ],

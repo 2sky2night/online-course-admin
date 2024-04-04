@@ -85,6 +85,7 @@ export default {
   "pages.video.tag.info.infoTitle": "基本信息",
   "pages.video.tag.info.videoTitle": "视频管理",
   "pages.video.tag.info.videoCollectionTitle": "视频合集管理",
+  "pages.video.comment.manage.title": "评论管理",
   "pages.404.subTitle": "您访问的资源不存在",
   "pages.500.subTitle": "系统错误，请稍后再试!",
   "pages.403.subTitle": " 您无权访问该资源!",

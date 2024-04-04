@@ -44,6 +44,21 @@ export type VideoTagItem = API.TagInfoDto;
 export type VideoTagInfo = VideoTagItem;
 
 /**
+ * 视频评论列表项
+ */
+export type VideoCommentItem = API.CommentDtoA;
+
+/**
+ * 视频回复列表项
+ */
+export type VideoReplyItem = API.ReplyDtoA;
+
+/**
+ * 视频弹幕列表项
+ */
+export type VideoDanmuItem = API.DanmuDtoA;
+
+/**
  * 视频列表的响应信息
  */
 export type VideoListRepsonse = API.ResponseDto & {
@@ -60,6 +75,39 @@ export type VideoListRepsonse = API.ResponseDto & {
 export type VideoCollectionResposne = API.ResponseDto & {
   data: {
     list: API.CollectionDtoA[];
+    total: number;
+    has_more: boolean;
+  };
+};
+
+/**
+ * 视频评论列表项
+ */
+export type VideoCommentListResponse = API.ResponseDto & {
+  data: {
+    list: API.CommentDtoA[];
+    total: number;
+    has_more: boolean;
+  };
+};
+
+/**
+ * 视频回复列表项
+ */
+export type VideoReplyListResponse = API.ResponseDto & {
+  data: {
+    list: API.ReplyDtoA[];
+    total: number;
+    has_more: boolean;
+  };
+};
+
+/**
+ * 视频弹幕列表项
+ */
+export type VideoDanmuListResponse = API.ResponseDto & {
+  data: {
+    list: API.DanmuDtoA[];
     total: number;
     has_more: boolean;
   };

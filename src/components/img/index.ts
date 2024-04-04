@@ -1,3 +1,4 @@
 import Avatar from "./avatar";
 import Image from "./image";
-export { Avatar,Image };
+import ImagesPreviews from "./images-preview";
+export { Avatar, Image, ImagesPreviews };

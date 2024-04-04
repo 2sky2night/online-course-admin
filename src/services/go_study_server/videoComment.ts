@@ -1,6 +1,6 @@
 // @ts-ignore
 /* eslint-disable */
-import { request } from '@umijs/max';
+import { request } from "@umijs/max";
 
 /** 查询视频评论列表 分页查询视频评论列表 GET /api/video/${param0}/comment */
 export async function videoCommentControllerList(
@@ -10,9 +10,9 @@ export async function videoCommentControllerList(
 ) {
   const { vid: param0, ...queryParams } = params;
   return request<
-    API.ResponseDto & { data?: { list?: API.CommentDto[]; total?: number; has_more?: boolean } }
+    API.ResponseDto & { data?: { list?: API.CommentDtoA[]; total?: number; has_more?: boolean } }
   >(`/api/video/${param0}/comment`, {
-    method: 'GET',
+    method: "GET",
     params: {
       ...queryParams,
     },
@@ -25,10 +25,10 @@ export async function videoCommentControllerAddComment(
   body: API.AddCommentDto,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResponseEmptyDto>('/api/video/comment', {
-    method: 'POST',
+  return request<API.ResponseEmptyDto>("/api/video/comment", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -43,7 +43,7 @@ export async function videoCommentControllerAddCommentLike(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/comment/${param0}`, {
-    method: 'POST',
+    method: "POST",
     params: { ...queryParams },
     ...(options || {}),
   });
@@ -57,8 +57,25 @@ export async function videoCommentControllerRemoveCommentLike(
 ) {
   const { cid: param0, ...queryParams } = params;
   return request<API.ResponseEmptyDto>(`/api/video/comment/${param0}`, {
-    method: 'DELETE',
+    method: "DELETE",
     params: { ...queryParams },
+    ...(options || {}),
+  });
+}
+
+/** 查询所有评论 分页查询所有评论 GET /api/video/comment/list */
+export async function videoCommentControllerCommonList(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoCommentControllerCommonListParams,
+  options?: { [key: string]: any },
+) {
+  return request<
+    API.ResponseDto & { data?: { list?: API.CommentDtoA[]; total?: number; has_more?: boolean } }
+  >("/api/video/comment/list", {
+    method: "GET",
+    params: {
+      ...params,
+    },
     ...(options || {}),
   });
 }

@@ -33,4 +33,6 @@ export default {
   "global.remove": "移除",
   "global.partition.name": "分区名",
   "global.tag.name": "标签名",
+  "global.content": "内容",
+  "global.images": "配图",
 };
