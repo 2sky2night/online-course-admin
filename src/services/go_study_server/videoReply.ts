@@ -2,6 +2,24 @@
 /* eslint-disable */
 import { request } from "@umijs/max";
 
+/** 查询某个视频下的所有回复 查询某个视频下的所有回复 GET /api/video/${param0}/reply/list */
+export async function videoReplyControllerReplyListInVideo(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoReplyControllerReplyListInVideoParams,
+  options?: { [key: string]: any },
+) {
+  const { vid: param0, ...queryParams } = params;
+  return request<
+    API.ResponseDto & { data?: { list?: API.ReplyDtoA[]; total?: number; has_more?: boolean } }
+  >(`/api/video/${param0}/reply/list`, {
+    method: "GET",
+    params: {
+      ...queryParams,
+    },
+    ...(options || {}),
+  });
+}
+
 /** 查询评论的回复列表 分页查询评论的所有回复列表 GET /api/video/comment/${param0}/reply */
 export async function videoReplyControllerList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)

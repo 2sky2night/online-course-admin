@@ -26,6 +26,8 @@ export default {
   "menu.video.comment.manage": "评论管理",
   "menu.video.reply": "视频回复",
   "menu.video.reply.manage": "回复管理",
+  "menu.video.danmu": "视频弹幕",
+  "menu.video.danmu.manage": "弹幕管理",
   "menu.exception.notPermission": "403",
   "menu.exception.notFind": "404",
   "menu.exception.serverError": "500",

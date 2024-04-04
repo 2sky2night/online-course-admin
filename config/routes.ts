@@ -209,6 +209,19 @@ export default [
               },
             ],
           },
+          {
+            // 视频弹幕
+            path: "danmu",
+            name: "danmu",
+            routes: [
+              {
+                // 视频弹幕管理
+                path: "manage",
+                component: "./video/danmu/manage",
+                name: "manage",
+              },
+            ],
+          },
         ],
       },
     ],

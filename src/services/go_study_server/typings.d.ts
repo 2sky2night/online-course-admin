@@ -1098,6 +1098,13 @@ declare namespace API {
     rid: number;
   };
 
+  type VideoReplyControllerReplyListInVideoParams = {
+    vid: number;
+    offset: number;
+    limit: number;
+    desc: boolean;
+  };
+
   type VideoTagControllerCollectionListParams = {
     tid: number;
     offset: number;
