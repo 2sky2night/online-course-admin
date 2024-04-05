@@ -67,7 +67,7 @@ export default {
   "pages.video.base.info.replyTitle": "回复",
   "pages.video.base.info.danmuTitle": "弹幕",
   "pages.video.collection.title": "视频合集管理",
-  "pages.video.base.manage.create": "创建视频",
+  "pages.video.base.manage.create": "发布视频",
   "pages.video.collection.manage.create": "创建视频合集",
   "pages.video.collection.manage.createOk": "创建视频合集成功!",
   "pages.video.collection.info.title": "视频合集详情",

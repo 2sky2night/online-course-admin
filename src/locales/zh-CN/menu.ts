@@ -9,7 +9,7 @@ export default {
   "menu.video": "视频",
   "menu.video.base": "视频模块",
   "menu.video.base.manage": "视频管理",
-  "menu.video.base.create": "视频创建",
+  "menu.video.base.create": "视频发布",
   "menu.video.base.edit": "视频编辑",
   "menu.video.base.upload": "视频上传",
   "menu.video.base.info": "视频详情",
