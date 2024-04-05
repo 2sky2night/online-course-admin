@@ -28,3 +28,13 @@ export const NoLoginWhitelist = ["/login", "/apply-register"];
  * 检测是否为绝对路径的正则
  */
 export const IsAbsolutePath = /^(?:\/|[a-zA-Z]:\\)/;
+
+/**
+ * 合法的视频文件扩展名列表
+ */
+export const AllowedExtensions = ["mp4", "mov", "avi", "mkv"];
+
+/**
+ * 轮询时间(单位:毫秒)
+ */
+export const PollingTime = 1000;

@@ -7,8 +7,10 @@ import { message } from "antd";
 export function globalErrorMsg(
   t: (id: string, dv?: string) => string,
   type: "warning" | "error" = "warning",
+  id = "global.error",
+  dv = "系统错误，请稍后重试!",
 ) {
-  message[type](t("global.error", "系统错误，请稍后重试!"));
+  message[type](t(id, dv));
 }
 
 /**

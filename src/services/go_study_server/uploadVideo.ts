@@ -1,6 +1,6 @@
 // @ts-ignore
 /* eslint-disable */
-import { request } from '@umijs/max';
+import { request } from "@umijs/max";
 
 /** 老师直接上传视频 老师直接上传视频 POST /api/upload/video */
 export async function uploadVideoControllerUploadVideo(
@@ -11,16 +11,16 @@ export async function uploadVideoControllerUploadVideo(
   const formData = new FormData();
 
   if (video) {
-    formData.append('video', video);
+    formData.append("video", video);
   }
 
   Object.keys(body).forEach((ele) => {
     const item = (body as any)[ele];
 
     if (item !== undefined && item !== null) {
-      if (typeof item === 'object' && !(item instanceof File)) {
+      if (typeof item === "object" && !(item instanceof File)) {
         if (item instanceof Array) {
-          item.forEach((f) => formData.append(ele, f || ''));
+          item.forEach((f) => formData.append(ele, f || ""));
         } else {
           formData.append(ele, JSON.stringify(item));
         }
@@ -30,10 +30,10 @@ export async function uploadVideoControllerUploadVideo(
     }
   });
 
-  return request<API.ResponseDto & { data?: API.RUploadVideoDto }>('/api/upload/video', {
-    method: 'POST',
+  return request<API.ResponseDto & { data?: API.RUploadVideoDto }>("/api/upload/video", {
+    method: "POST",
     data: formData,
-    requestType: 'form',
+    requestType: "form",
     ...(options || {}),
   });
 }
@@ -47,16 +47,16 @@ export async function uploadVideoControllerUploadChunk(
   const formData = new FormData();
 
   if (chunk) {
-    formData.append('chunk', chunk);
+    formData.append("chunk", chunk);
   }
 
   Object.keys(body).forEach((ele) => {
     const item = (body as any)[ele];
 
     if (item !== undefined && item !== null) {
-      if (typeof item === 'object' && !(item instanceof File)) {
+      if (typeof item === "object" && !(item instanceof File)) {
         if (item instanceof Array) {
-          item.forEach((f) => formData.append(ele, f || ''));
+          item.forEach((f) => formData.append(ele, f || ""));
         } else {
           formData.append(ele, JSON.stringify(item));
         }
@@ -66,10 +66,10 @@ export async function uploadVideoControllerUploadChunk(
     }
   });
 
-  return request<API.ResponseEmptyDto>('/api/upload/video/chunk', {
-    method: 'POST',
+  return request<API.ResponseEmptyDto>("/api/upload/video/chunk", {
+    method: "POST",
     data: formData,
-    requestType: 'form',
+    requestType: "form",
     ...(options || {}),
   });
 }
@@ -81,9 +81,9 @@ export async function uploadVideoControllerGetVideoMergeProgress(
   options?: { [key: string]: any },
 ) {
   return request<API.ResponseDto & { data?: API.RGetVideoMergeProgress }>(
-    '/api/upload/video/chunk/merge',
+    "/api/upload/video/chunk/merge",
     {
-      method: 'GET',
+      method: "GET",
       params: {
         ...params,
       },
@@ -97,10 +97,10 @@ export async function uploadVideoControllerMergeChunk(
   body: API.MergeChunkDto,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResponseDto & { data?: API.RMergeChunk }>('/api/upload/video/chunk/merge', {
-    method: 'POST',
+  return request<API.ResponseDto & { data?: API.RMergeChunk }>("/api/upload/video/chunk/merge", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -112,10 +112,10 @@ export async function uploadVideoControllerChunkUploadProgress(
   body: API.ChunkProgressDto,
   options?: { [key: string]: any },
 ) {
-  return request<API.RChunkUploadProgress>('/api/upload/video/chunk/progress', {
-    method: 'POST',
+  return request<API.RChunkUploadProgress>("/api/upload/video/chunk/progress", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -127,10 +127,10 @@ export async function uploadVideoControllerFastUpload(
   body: API.FastUploadDto,
   options?: { [key: string]: any },
 ) {
-  return request<API.ResponseDto & { data?: API.RFastUploadDto }>('/api/upload/video/fast', {
-    method: 'POST',
+  return request<API.ResponseDto & { data?: API.RFastUploadDto }>("/api/upload/video/fast", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     data: body,
     ...(options || {}),
@@ -144,9 +144,9 @@ export async function uploadVideoControllerGetVideoProcessingProgress(
   options?: { [key: string]: any },
 ) {
   return request<API.ResponseDto & { data?: API.RGetVideoProcessingProgress }>(
-    '/api/upload/video/processing',
+    "/api/upload/video/processing",
     {
-      method: 'GET',
+      method: "GET",
       params: {
         ...params,
       },
@@ -165,7 +165,24 @@ export async function uploadVideoControllerToDoVideoProcessing(
   return request<API.ResponseDto & { data?: API.RToDoVideoProcessing }>(
     `/api/upload/video/processing/${param0}`,
     {
-      method: 'POST',
+      method: "POST",
+      params: { ...queryParams },
+      ...(options || {}),
+    },
+  );
+}
+
+/** 获取文件的视频源 获取文件的视频源 GET /api/upload/video/source/${param0} */
+export async function uploadVideoControllerGetFileVideos(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.UploadVideoControllerGetFileVideosParams,
+  options?: { [key: string]: any },
+) {
+  const { fid: param0, ...queryParams } = params;
+  return request<API.ResponseDto & { data?: API.RGetFileVideos }>(
+    `/api/upload/video/source/${param0}`,
+    {
+      method: "GET",
       params: { ...queryParams },
       ...(options || {}),
     },

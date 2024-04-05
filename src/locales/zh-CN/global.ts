@@ -35,4 +35,13 @@ export default {
   "global.tag.name": "标签名",
   "global.content": "内容",
   "global.images": "配图",
+  "global.select.file": "选择文件",
+  "global.toUploadFile": "上传文件",
+  "global.stopUploadFile": "暂停上传文件",
+  "global.select.file.error": "选择文件失败!",
+  "global.confirm.reset": "确认重置?",
+  "global.api.cannot.supprt": "浏览器不支持此功能!",
+  "global.action.error": "操作失败!",
+  "global.isSelect.file": "已选择文件",
+  "global.toUploadFile.ok": "上传文件成功!",
 };

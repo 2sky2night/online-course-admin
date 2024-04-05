@@ -1,4 +1,4 @@
-﻿import { history,RequestConfig } from "@umijs/max";
+﻿import { history, RequestConfig } from "@umijs/max";
 import { FormattedMessage } from "@umijs/max";
 import { message } from "antd";
 
@@ -23,7 +23,7 @@ export const errorConfig: RequestConfig = {
       return Promise.reject(errorResult);
     },
     errorHandler(error) {
-      const { response } = error as AxiosError<ResponseError>;
+      const { response, code } = error as AxiosError<ResponseError>;
       if (response?.data) {
         if (response.status === 401) {
           // 401 token无效
@@ -36,6 +36,7 @@ export const errorConfig: RequestConfig = {
         }
         message.error(response.data.msg);
       } else {
+        if (code === "ERR_CANCELED") return; // 用户自己取消请求不弹出提示消息
         message.error(
           <FormattedMessage id="global.error" defaultMessage="系统错误，请稍后重试!" />,
         );

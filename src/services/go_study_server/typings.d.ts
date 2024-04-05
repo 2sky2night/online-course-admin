@@ -407,6 +407,8 @@ declare namespace API {
     video: string;
   };
 
+  type FileVideo = any;
+
   type LoginAccountDto = {
     /** 账户名 */
     username: string;
@@ -557,6 +559,24 @@ declare namespace API {
     file_id?: number;
     /** 资源路径 */
     url?: string;
+  };
+
+  type RGetFileVideos = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 文件的id */
+    file_id: number;
+    /** 文件的hash */
+    hash: string;
+    /** 文件存储的路径 */
+    file_path: string;
+    /** 文件类型 */
+    file_type: "image" | "video";
+    m3u8: FileVideo[];
   };
 
   type RGetVideoMergeProgress = {
@@ -799,6 +819,10 @@ declare namespace API {
   type UpdateVideoPartitionDto = {
     /** 分区的id */
     partition_id: number;
+  };
+
+  type UploadVideoControllerGetFileVideosParams = {
+    fid: number;
   };
 
   type UploadVideoControllerGetVideoMergeProgressParams = {
