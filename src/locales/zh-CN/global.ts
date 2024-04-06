@@ -44,4 +44,8 @@ export default {
   "global.action.error": "操作失败!",
   "global.isSelect.file": "已选择文件",
   "global.toUploadFile.ok": "上传文件成功!",
+  "global.form.please.select": "请选择",
+  "global.img.type.error": "选择的图片格式不支持!",
+  "global.img.size.error": "选择的图片过大!",
+  "global.reset.select": "重新选择",
 };

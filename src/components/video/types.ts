@@ -26,7 +26,7 @@ export interface VideoSrouce {
    */
   type: VideoQuality | null;
   /**
-   * 视频
+   * 视频，提供绝对路径即可，会自动拼接
    */
   url: string;
 }
@@ -51,4 +51,12 @@ export interface Props {
    * 当画质类型为原画（null）的国际化
    */
   rawI18n: string;
+  /**
+   * 画布高
+   */
+  height?: string;
+  /**
+   * 画布宽
+   */
+  width?: string;
 }

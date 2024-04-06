@@ -38,3 +38,13 @@ export const AllowedExtensions = ["mp4", "mov", "avi", "mkv"];
  * 轮询时间(单位:毫秒)
  */
 export const PollingTime = 1000;
+
+/**
+ * 合法的图片格式
+ */
+export const AllowedImageExtensions = ["image/jpeg", "image/png"];
+
+/**
+ * 最多可以选择的标签数量
+ */
+export const TagMaxCount = 10;

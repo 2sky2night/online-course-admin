@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { CSSProperties, useEffect, useMemo, useRef, useState } from "react";
 import type { VideoJsPlayer } from "video.js/index";
 
 import { videoBaseUrl } from "@/config";
@@ -26,6 +26,8 @@ export default function VideoPlayer({
   onExitFullScreenError,
   onFullScreenError,
   rawI18n,
+  height,
+  width,
 }: Props) {
   /**
    * @name 当前选择的画质
@@ -63,6 +65,18 @@ export default function VideoPlayer({
   const [isFull, setIsFull] = useState(false);
   // 此组件的根dom
   const rootRef = useRef<HTMLDivElement | null>(null);
+  // 播放器样式
+  const style = useMemo(() => {
+    const setting: CSSProperties = {
+      position: "relative",
+      display: "flex",
+      alignItems: "center",
+    };
+    if (height) setting.height = height;
+    if (width) setting.width = width;
+
+    return setting;
+  }, [height, width]);
   /**
    * @name 播放器实例
    */
@@ -167,7 +181,7 @@ export default function VideoPlayer({
   }, [activeUrl]);
 
   return (
-    <div style={{ position: "relative", display: "flex", alignItems: "center" }} ref={rootRef}>
+    <div style={style} ref={rootRef}>
       <Panel
         sources={formatSource}
         activeType={activeType}

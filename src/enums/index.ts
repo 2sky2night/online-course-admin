@@ -34,3 +34,17 @@ export enum FileSize {
    */
   FILE_IMAGE_SIZE = 10485760,
 }
+
+/**
+ * 文件类型
+ */
+export enum FileType {
+  /**
+   * 图片
+   */
+  IMAGE = "image",
+  /**
+   * 视频
+   */
+  VIDEO = "video",
+}
