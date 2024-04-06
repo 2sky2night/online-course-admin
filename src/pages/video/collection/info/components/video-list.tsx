@@ -1,13 +1,15 @@
 import { FormattedMessage, useModel } from "@umijs/max";
-import { Button, message,Popconfirm } from "antd";
+import { Button, message, Popconfirm } from "antd";
 import { useRef } from "react";
 
-import { Action, VideoPermission, VideoTable } from "@/components";
+import { Action, VideoTable } from "@/components";
 import type { VideoTableInst } from "@/components/table/video";
 import {
   videoCollectionControllerRemoveVideos as removeVideos,
   videoCollectionControllerVideoList as videoList,
 } from "@/services/go_study_server/videoCollection";
+
+import { Select } from "./index";
 interface Props {
   collectionId: number;
   creatorId: number;
@@ -23,7 +25,6 @@ type Response = API.ResponseDto & {
 
 /**
  * 视频列表
- * // TODO 1.添加视频，弹出模态框，添加视频
  */
 export default function VideoList({ collectionId, creatorId }: Props) {
   const state = useModel("@@initialState", (v) => v.initialState);
@@ -82,20 +83,11 @@ export default function VideoList({ collectionId, creatorId }: Props) {
       tableProps={{
         toolBarRender: () => {
           return [
-            <VideoPermission
+            <Select
               key="0"
-              toAdmin={false}
+              onFinsh={() => tableRef.current?.handleReload()}
+              collectionId={collectionId}
               creatorId={creatorId}
-              Component={() => {
-                return (
-                  <Button type="primary" onClick={() => message.info("填出模态框，添加视频")}>
-                    <FormattedMessage
-                      id="pages.video.collection.info.add.video"
-                      defaultMessage="添加视频"
-                    />
-                  </Button>
-                );
-              }}
             />,
           ];
         },

@@ -960,6 +960,13 @@ declare namespace API {
     vid: number;
   };
 
+  type VideoControllerGetTeacherVideoListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
+    tid: number;
+  };
+
   type VideoControllerGetVideoStatusParams = {
     vid: number;
   };

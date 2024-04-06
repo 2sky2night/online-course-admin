@@ -290,3 +290,22 @@ export async function videoControllerPartitionList(
     ...(options || {}),
   });
 }
+
+/** 查询某个老师发布的视频 查询某个老师发布的视频 GET /api/video/list/teacher */
+export async function videoControllerGetTeacherVideoList(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoControllerGetTeacherVideoListParams,
+  options?: { [key: string]: any },
+) {
+  return request<
+    API.ResponseDto & {
+      data?: { list?: API.RVideoListItemDto[]; total?: number; has_more?: boolean };
+    }
+  >("/api/video/list/teacher", {
+    method: "GET",
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}

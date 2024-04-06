@@ -1,3 +1,4 @@
 import PartitionSelector from "./partition";
 import TagSelector from "./tag";
-export { PartitionSelector, TagSelector };
+import VideoSelector from "./video";
+export { PartitionSelector, TagSelector, VideoSelector };

@@ -76,6 +76,7 @@ export default {
   "pages.video.collection.info.remove.tips": "确认要从合集中移除该视频?",
   "pages.video.collection.info.remove.ok": "移除视频成功!",
   "pages.video.collection.info.add.video": "添加视频",
+  "pages.video.collection.info.add.video.ok": "添加视频成功!",
   "pages.video.parition.manage.title": "视频分区管理",
   "pages.video.parition.manage.create": "创建分区",
   "pages.video.parition.manage.createOk": "创建视频分区成功!",
