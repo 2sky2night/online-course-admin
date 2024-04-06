@@ -37,7 +37,7 @@ export default function VideoInfoForm({ data }: Props) {
       },
       value: data.video_cover,
       render(value: string) {
-        return <Image src={value} />;
+        return <Image src={value} antdProps={{ height: "300px" }} />;
       },
     },
     {
