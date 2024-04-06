@@ -70,6 +70,8 @@ export default {
   "pages.video.base.manage.create": "发布视频",
   "pages.video.collection.manage.create": "创建视频合集",
   "pages.video.collection.manage.createOk": "创建视频合集成功!",
+  "pages.video.collection.manage.edit": "编辑视频合集",
+  "pages.video.collection.manage.editOk": "编辑视频合集成功!",
   "pages.video.collection.info.title": "视频合集详情",
   "pages.video.collection.info.base.title": "基本信息",
   "pages.video.collection.info.video.title": "视频管理",

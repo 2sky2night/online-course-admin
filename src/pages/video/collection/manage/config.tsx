@@ -5,12 +5,12 @@ import { Button, message, Space } from "antd";
 import { Action, Avatar, CreateTime, Image, UpdateTime, VideoPermission } from "@/components";
 import type { VideoCollection } from "@/types";
 
-type Render = () => ProColumns<VideoCollection>[];
+type Render = (handleOpen: (collection: VideoCollection) => void) => ProColumns<VideoCollection>[];
 
 /**
  * 表单的配置项
  */
-export const colunmsRender: Render = () => [
+export const colunmsRender: Render = (handleOpen) => [
   {
     dataIndex: "collection_id",
     title: "id",
@@ -73,15 +73,15 @@ export const colunmsRender: Render = () => [
   {
     valueType: "option",
     title: <Action />,
-    render(_, { creator: { account_id } }) {
+    render(_, entity) {
       return (
         <VideoPermission
-          creatorId={account_id}
+          creatorId={entity.creator.account_id}
           toAdmin={false}
           Component={() => {
             return (
               <Space>
-                <Button size="small" type="primary" onClick={() => message.info("弹出模态框")}>
+                <Button size="small" type="primary" onClick={() => handleOpen(entity)}>
                   <FormattedMessage id="global.edit" defaultMessage="编辑" />
                 </Button>
                 <Button

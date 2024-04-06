@@ -1,9 +1,9 @@
 import type { ProFormInstance } from "@ant-design/pro-components";
 import { ModalForm, ProFormText } from "@ant-design/pro-components";
+import { FormattedMessage } from "@umijs/max";
 import { Button, message } from "antd";
 import { useRef, useState } from "react";
 
-import { FormattedMessage } from "@/.umi/plugin-locale/localeExports";
 import { videoCollectionControllerPublishCollection as createCollection } from "@/services/go_study_server/videoCollection";
 
 interface Props {
