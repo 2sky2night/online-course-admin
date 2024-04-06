@@ -2,14 +2,14 @@ import type { ProColumns, ProTableProps } from "@ant-design/pro-components";
 
 import { VideoItem } from "@/types";
 
-export interface Props<T> {
+export interface Props<T = VideoItem> {
   /**
    * 请求函数，会在刷新、初始化、页码、页长度更新时执行
    * @param pageSize 页长度
    * @param page 页码
    * @returns
    */
-  request: (pageSize: number, page: number) => Promise<{ data: { list: T; total: number } }>;
+  request: (pageSize: number, page: number) => Promise<{ data: { list: T[]; total: number } }>;
   /**
    * 扩展列
    */

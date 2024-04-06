@@ -1,9 +1,13 @@
 import { FormattedMessage, useModel } from "@umijs/max";
-import { Button, message } from "antd";
+import { Button, message,Popconfirm } from "antd";
+import { useRef } from "react";
 
-import { Action,VideoPermission, VideoTable } from "@/components";
-import { videoCollectionControllerVideoList as videoList } from "@/services/go_study_server/videoCollection";
-
+import { Action, VideoPermission, VideoTable } from "@/components";
+import type { VideoTableInst } from "@/components/table/video";
+import {
+  videoCollectionControllerRemoveVideos as removeVideos,
+  videoCollectionControllerVideoList as videoList,
+} from "@/services/go_study_server/videoCollection";
 interface Props {
   collectionId: number;
   creatorId: number;
@@ -20,12 +24,13 @@ type Response = API.ResponseDto & {
 /**
  * 视频列表
  * // TODO 1.添加视频，弹出模态框，添加视频
- * // TODO 2.移除视频
  */
 export default function VideoList({ collectionId, creatorId }: Props) {
   const state = useModel("@@initialState", (v) => v.initialState);
+  const tableRef = useRef<VideoTableInst | null>(null);
   return (
     <VideoTable
+      ref={tableRef}
       extraColumsList={
         state?.account?.account_id === creatorId
           ? [
@@ -33,16 +38,41 @@ export default function VideoList({ collectionId, creatorId }: Props) {
                 dataIndex: "ascsac",
                 title: <Action />,
                 valueType: "option",
-                render: () => {
+                render: (_, { video_id }) => {
                   return (
-                    <Button
-                      danger
-                      size="small"
-                      type="primary"
-                      onClick={() => message.info("二次确认")}
+                    <Popconfirm
+                      title={<FormattedMessage id="global.tips" defaultMessage="提示" />}
+                      description={
+                        <FormattedMessage
+                          id="pages.video.collection.info.remove.tips"
+                          defaultMessage="确认要从合集中移除该视频?"
+                        />
+                      }
+                      onConfirm={async () => {
+                        try {
+                          await removeVideos(
+                            {
+                              cid: collectionId,
+                            },
+                            { video_id_list: [video_id] },
+                          );
+                          message.success(
+                            <FormattedMessage
+                              id="pages.video.collection.info.remove.ok"
+                              defaultMessage="移除视频成功!"
+                            />,
+                          );
+                          tableRef.current?.handleReload();
+                          return Promise.resolve();
+                        } catch (error) {
+                          return Promise.resolve();
+                        }
+                      }}
                     >
-                      <FormattedMessage id="global.remove" defaultMessage="移除" />
-                    </Button>
+                      <Button danger size="small" type="primary">
+                        <FormattedMessage id="global.remove" defaultMessage="移除" />
+                      </Button>
+                    </Popconfirm>
                   );
                 },
               },

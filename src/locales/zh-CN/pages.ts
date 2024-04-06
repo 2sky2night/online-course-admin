@@ -73,6 +73,8 @@ export default {
   "pages.video.collection.info.title": "视频合集详情",
   "pages.video.collection.info.base.title": "基本信息",
   "pages.video.collection.info.video.title": "视频管理",
+  "pages.video.collection.info.remove.tips": "确认要从合集中移除该视频?",
+  "pages.video.collection.info.remove.ok": "移除视频成功!",
   "pages.video.collection.info.add.video": "添加视频",
   "pages.video.parition.manage.title": "视频分区管理",
   "pages.video.parition.manage.create": "创建分区",
