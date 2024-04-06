@@ -48,4 +48,5 @@ export default {
   "global.img.type.error": "选择的图片格式不支持!",
   "global.img.size.error": "选择的图片过大!",
   "global.reset.select": "重新选择",
+  "global.add": "添加",
 };

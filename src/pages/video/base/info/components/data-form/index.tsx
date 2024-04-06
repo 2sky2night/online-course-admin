@@ -39,7 +39,14 @@ export default function VideoDataForm({ data }: Props) {
         id: "global.partition",
         dv: "分区",
       },
-      value: data.partition.partition_name,
+      render: () => {
+        const name = data.partition?.partition_name;
+        if (name) {
+          return <span>name</span>;
+        } else {
+          return <span>-</span>;
+        }
+      },
     },
     {
       label: {
@@ -47,13 +54,18 @@ export default function VideoDataForm({ data }: Props) {
         dv: "标签",
       },
       render() {
-        return (
-          <Space>
-            {data.tags.map((tag) => (
-              <Tag key={tag.tag_id}>{tag.tag_name}</Tag>
-            ))}
-          </Space>
-        );
+        const tags = data.tags;
+        if (tags?.length) {
+          return (
+            <Space>
+              {data.tags.map((tag) => (
+                <Tag key={tag.tag_id}>{tag.tag_name}</Tag>
+              ))}
+            </Space>
+          );
+        } else {
+          return <span>-</span>;
+        }
       },
     },
   ];

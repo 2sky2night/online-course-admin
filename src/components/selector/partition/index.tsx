@@ -1,4 +1,4 @@
-import { Form,Select } from "antd";
+import { Form, Select } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { videoPartitionControllerList as partitionList } from "@/services/go_study_server/videoPartition";
@@ -16,7 +16,7 @@ interface Props {
   /**
    * 选择更新的回调
    */
-  onChange?: (value: number) => void;
+  onChange?: (value: number, item?: VideoPartitionItem) => void;
   /**
    * 每次加载多少项
    */
@@ -25,6 +25,14 @@ interface Props {
    * 候选词
    */
   placeholder?: string;
+  /**
+   * 哪些需要被禁用
+   */
+  disabledList?: number[];
+  /**
+   * 渲染表单项组件？
+   */
+  renderForm?: boolean;
 }
 
 type ListResponse = API.ResponseDto & {
@@ -45,19 +53,28 @@ export default function PartitionSelector({
   pageSize = 20,
   onChange = () => {},
   placeholder = "请选择分区",
+  disabledList = [],
+  renderForm = true,
 }: Props) {
   const [list, setList] = useState<VideoPartitionItem[]>([]);
   const [loading, setLoading] = useState(false);
   const pageRef = useRef(1);
   const hasMoreRef = useRef(false);
   const options = useMemo(() => {
-    return list.map((item) => {
+    const items = list.map((item) => {
       return {
         value: item.partition_id,
         label: item.partition_name,
+        disabled: false,
       };
     });
-  }, [list]);
+    if (disabledList.length) {
+      items.forEach((item) => {
+        item.disabled = disabledList.includes(item.value);
+      });
+    }
+    return items;
+  }, [list, disabledList]);
   const handleRequest = async () => {
     setLoading(true);
     const { data } = (await partitionList({
@@ -77,18 +94,27 @@ export default function PartitionSelector({
       handleRequest();
     }
   };
+  const handleChange = (value: number) => {
+    const item = list.find((item) => item.partition_id === value); // 找出对应的元数据
+    onChange(value, item);
+  };
   useEffect(() => {
     handleRequest();
   }, []);
-  return (
+  const select = (
+    <Select
+      options={options}
+      onPopupScroll={handleScroll}
+      loading={loading}
+      onChange={handleChange}
+      placeholder={placeholder}
+    />
+  );
+  return renderForm ? (
     <Form.Item name={name} label={label}>
-      <Select
-        options={options}
-        onPopupScroll={handleScroll}
-        loading={loading}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
+      {select}
     </Form.Item>
+  ) : (
+    select
   );
 }

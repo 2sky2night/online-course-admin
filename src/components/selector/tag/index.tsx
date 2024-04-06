@@ -1,4 +1,4 @@
-import { Form,Select } from "antd";
+import { Form, Select } from "antd";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { TagMaxCount } from "@/constants";
@@ -17,7 +17,7 @@ interface Props {
   /**
    * 选择更新的回调
    */
-  onChange?: (value: number[]) => void;
+  onChange?: (value: number[], list: VideoTagItem[]) => void;
   /**
    * 每次加载多少项
    */
@@ -26,6 +26,14 @@ interface Props {
    * 候选词
    */
   placeholder?: string;
+  /**
+   * 哪些项需要被禁用(传入禁用的id)
+   */
+  disabledList?: number[];
+  /**
+   * 渲染表单项组件？
+   */
+  renderForm?: boolean;
 }
 
 type ListResponse = {
@@ -44,19 +52,29 @@ export default function TagSelector({
   pageSize = 20,
   onChange = () => {},
   placeholder = "请选择标签",
+  disabledList,
+  renderForm = true,
 }: Props) {
   const [loading, setLoading] = useState(false);
   const pageRef = useRef(1);
   const hasMoreRef = useRef(false);
   const [list, setList] = useState<VideoTagItem[]>([]);
   const options = useMemo(() => {
-    return list.map((item) => {
+    const items = list.map((item) => {
       return {
         value: item.tag_id,
         label: item.tag_name,
+        disabled: false,
       };
     });
-  }, [list]);
+    if (disabledList?.length) {
+      // 哪些需要被禁用
+      items.forEach((item) => {
+        item.disabled = disabledList.includes(item.value);
+      });
+    }
+    return items;
+  }, [list, disabledList]);
   const handleRequset = async () => {
     setLoading(true);
     const {
@@ -78,21 +96,36 @@ export default function TagSelector({
       handleRequset();
     }
   };
+  /**
+   * 更新的回调
+   */
+  const handleChange = (value: number[]) => {
+    // 过滤出选择的标签
+    const tags = list.filter((tag) => {
+      return value.includes(tag.tag_id);
+    });
+    onChange(value, tags);
+  };
   useEffect(() => {
     handleRequset();
   }, []);
-  return (
+  const select = (
+    <Select
+      mode="multiple"
+      allowClear
+      maxCount={TagMaxCount}
+      options={options}
+      onPopupScroll={handleScroll}
+      loading={loading}
+      onChange={handleChange}
+      placeholder={placeholder}
+    />
+  );
+  return renderForm ? (
     <Form.Item name={name} label={label}>
-      <Select
-        mode="multiple"
-        allowClear
-        maxCount={TagMaxCount}
-        options={options}
-        onPopupScroll={handleScroll}
-        loading={loading}
-        onChange={onChange}
-        placeholder={placeholder}
-      />
+      {select}
     </Form.Item>
+  ) : (
+    select
   );
 }

@@ -1,4 +1,41 @@
-// 分成两大板块，视频基本信息修改，以及视频分区、标签的修改
+import { ProSkeleton } from "@ant-design/pro-components";
+import { history, useParams, useRequest } from "@umijs/max";
+import { useAntdToken } from "antd-style";
+
+import { Title } from "@/components";
+import { videoControllerInfo as videoInfo } from "@/services/go_study_server/video";
+import type { VideoInfo } from "@/types";
+
+import { EditVideoInfo, EditVideoPartition, EditVideoTag } from "./components";
+/**
+ * 编辑视频页
+ * 1.基本信息回显
+ * 2.基本信息编辑
+ * 3.分区编辑
+ * 4.标签编辑
+ */
 export default function VideoEditPage() {
-  return <div>视频编辑</div>;
+  const { colorText } = useAntdToken();
+  const { video_id } = useParams();
+  const videoId = Number(video_id);
+  const { data, loading, error } = useRequest(() => {
+    if (Number.isNaN(videoId)) {
+      history.replace("/404");
+      return Promise.reject();
+    } else {
+      return videoInfo({
+        vid: videoId,
+      });
+    }
+  });
+  return loading || error ? (
+    <ProSkeleton type="descriptions" />
+  ) : (
+    <div style={{ color: colorText }}>
+      <Title title={{ id: "page.video.base.edit.title", dv: "编辑视频" }} />
+      <EditVideoInfo data={data as VideoInfo} />
+      <EditVideoTag tags={(data as VideoInfo).tags} videoId={videoId} />
+      <EditVideoPartition partition={(data as VideoInfo).partition} videoId={videoId} />
+    </div>
+  );
 }
