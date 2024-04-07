@@ -53,4 +53,10 @@ export default {
   "global.avatar": "头像",
   "global.username": "名称",
   "global.email": "邮箱",
+  "global.registerType": "注册类型",
+  "global.age": "年龄",
+  "global.gender": "性别",
+  "global.gender.man": "男",
+  "global.gender.woman": "女",
+  "global.platformId": "平台id",
 };

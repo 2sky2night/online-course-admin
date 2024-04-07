@@ -139,6 +139,7 @@ export default {
   "page.account.edit.nowPassword": "当前密码",
   "page.account.edit.info.password": "更新账户密码成功!",
   "page.account.manage.toB.title": "后台用户管理",
+  "page.account.manage.toC.title": "前台用户管理",
   "pages.404.subTitle": "您访问的资源不存在",
   "pages.500.subTitle": "系统错误，请稍后再试!",
   "pages.403.subTitle": " 您无权访问该资源!",

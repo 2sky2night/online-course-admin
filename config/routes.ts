@@ -76,6 +76,12 @@ export default [
                 component: "./account/manage/toB",
                 name: "toB",
               },
+              {
+                // 管理前台用户
+                path: "toC",
+                component: "./account/manage/toC",
+                name: "toC",
+              },
             ],
           },
           {
