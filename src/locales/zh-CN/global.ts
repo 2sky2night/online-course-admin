@@ -50,4 +50,7 @@ export default {
   "global.reset.select": "重新选择",
   "global.add": "添加",
   "global.submit": "提交",
+  "global.avatar": "头像",
+  "global.username": "名称",
+  "global.email": "邮箱",
 };

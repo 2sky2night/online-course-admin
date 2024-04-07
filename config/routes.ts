@@ -65,6 +65,20 @@ export default [
             ],
           },
           {
+            // 管理用户
+            path: "manage",
+            name: "manage",
+            access: "isSuperAdmin", // 超级管理员可见
+            routes: [
+              {
+                // 管理后台用户
+                path: "toB",
+                component: "./account/manage/toB",
+                name: "toB",
+              },
+            ],
+          },
+          {
             // 用户编辑
             path: "edit",
             name: "edit",

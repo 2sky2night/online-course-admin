@@ -10,6 +10,23 @@ export async function accountControllerGetInfoByToken(options?: { [key: string]:
   });
 }
 
+/** 查询后台所有用户 查询后台所有用户 GET /api/account/list */
+export async function accountControllerList(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.AccountControllerListParams,
+  options?: { [key: string]: any },
+) {
+  return request<
+    API.ResponseDto & { data?: { list?: API.AccountInfoDto[]; total?: number; has_more?: boolean } }
+  >("/api/account/list", {
+    method: "GET",
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+
 /** 更新账户密码 后台账户更新密码 POST /api/account/password */
 export async function accountControllerUpdatePassword(
   body: API.UpdateAccountPasswordDto,

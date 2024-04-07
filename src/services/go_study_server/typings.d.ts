@@ -1,4 +1,10 @@
 declare namespace API {
+  type AccountControllerListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
+  };
+
   type AccountDto = {
     /** 创建时间 */
     created_time: string;
@@ -850,6 +856,12 @@ declare namespace API {
     fid: number;
   };
 
+  type UserControllerListParams = {
+    offset: number;
+    limit: number;
+    desc: boolean;
+  };
+
   type UserDto = {
     /** 创建时间 */
     created_time: string;
@@ -869,6 +881,42 @@ declare namespace API {
     gender: boolean;
     /** 用户年龄 */
     age: number;
+  };
+
+  type UserInfoDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 用户id */
+    user_id: number;
+    /** 对应平台的用户id */
+    platform_id: string;
+    /** 用户名称 */
+    user_name: string;
+    /** 用户头像 */
+    avatar: string;
+    /** 用户性别 */
+    gender: boolean;
+    /** 用户年龄 */
+    age: number;
+    /** 用户注册的类型 */
+    register_type: UserRegisterTypeDto;
+  };
+
+  type UserRegisterTypeDto = {
+    /** 创建时间 */
+    created_time: string;
+    /** 更新时间 */
+    updated_time: string;
+    /** 删除时间 */
+    deleted_time: string;
+    /** 注册类型id */
+    register_id: number;
+    /** 注册类型的名称 */
+    register_platform: string;
   };
 
   type VideoCollectionControllerAddTagsParams = {
