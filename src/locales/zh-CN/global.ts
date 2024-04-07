@@ -49,4 +49,5 @@ export default {
   "global.img.size.error": "选择的图片过大!",
   "global.reset.select": "重新选择",
   "global.add": "添加",
+  "global.submit": "提交",
 };

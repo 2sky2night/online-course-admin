@@ -64,6 +64,12 @@ export default [
               },
             ],
           },
+          {
+            // 用户编辑
+            path: "edit",
+            name: "edit",
+            component: "./account/edit",
+          },
         ],
       },
       {
