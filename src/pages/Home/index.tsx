@@ -1,15 +1,20 @@
-import { Button } from "antd";
+import { Navigate, useModel } from "@umijs/max";
 import { useTheme } from "antd-style";
+
+import { Role } from "@/components";
+import { Roles } from "@/enums";
+import { InitialState } from "@/types";
+
+import { SystemPanel, Welcome } from "./components";
 
 export default function HomePage() {
   const theme = useTheme();
-  const handleClick = () => {};
+  const { account } = useModel("@@initialState", (v) => v.initialState) as InitialState;
+  if (account === null) return <Navigate to="/login" />;
   return (
-    <div>
-      <Button type="primary" onClick={handleClick}>
-        111
-      </Button>
-      <div style={{ color: theme.colorText }}>111</div>
+    <div style={{ color: theme.colorText }}>
+      <Welcome user={account} />
+      <Role roles={[Roles.SUPER_ADMIN]} Component={() => <SystemPanel />} />
     </div>
   );
 }

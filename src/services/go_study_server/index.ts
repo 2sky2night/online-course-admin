@@ -16,8 +16,7 @@ import * as videoFavorite from "./videoFavorite";
 import * as videoComment from "./videoComment";
 import * as videoReply from "./videoReply";
 import * as videoDanmu from "./videoDanmu";
-import * as healthControllerCheckDatabase from "./healthControllerCheckDatabase";
-import * as healthControllerCheckDisk from "./healthControllerCheckDisk";
+import * as monitor from "./monitor";
 export default {
   uploadImg,
   user,
@@ -33,6 +32,5 @@ export default {
   videoComment,
   videoReply,
   videoDanmu,
-  healthControllerCheckDatabase,
-  healthControllerCheckDisk,
+  monitor,
 };

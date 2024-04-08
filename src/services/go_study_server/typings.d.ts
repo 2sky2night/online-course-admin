@@ -237,6 +237,13 @@ declare namespace API {
     user: UserDto;
   };
 
+  type CpuDto = {
+    /** cpu核心数量 */
+    core_count: number;
+    /** cpu使用率，百分比 */
+    usage: number;
+  };
+
   type CreateDanmuDto = {
     /** 弹幕内容 */
     content: string;
@@ -322,6 +329,17 @@ declare namespace API {
   type DeleteVideosDto = {
     /** 视频id列表 */
     video_id_list: number[];
+  };
+
+  type DiskDto = {
+    /** 磁盘大小，字节 */
+    size: number;
+    /** 磁盘使用率，百分比 */
+    usage: number;
+    /** 分区名称 */
+    fs: string;
+    /** 分区名称 */
+    mount: string;
   };
 
   type EmailCodeDto = {
@@ -435,11 +453,25 @@ declare namespace API {
     password: string;
   };
 
+  type MemoryDto = {
+    /** 内存大小，字节 */
+    size: number;
+    /** 内存使用率，百分比 */
+    usage: number;
+  };
+
   type MergeChunkDto = {
     /** 文件的hash */
     file_hash: string;
     /** 切片数量 */
     chunk_count: number;
+  };
+
+  type NetworkDto = {
+    /**  网络下载速度（MB） */
+    download: number;
+    /**  网络上传速度（MB） */
+    upload: number;
   };
 
   type OauthLoginDto = {
@@ -740,6 +772,17 @@ declare namespace API {
     file_path: string;
     /** 分辨率 */
     resolution: number;
+  };
+
+  type SystemUsageDto = {
+    /** cpu相关信息 */
+    cpu: CpuDto;
+    /** 内存相关信息 */
+    memory: MemoryDto;
+    /** 磁盘相关信息 */
+    disk: DiskDto[];
+    /** 网络相关信息 */
+    network: NetworkDto;
   };
 
   type TagDto = {
