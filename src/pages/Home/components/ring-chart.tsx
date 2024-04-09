@@ -1,4 +1,5 @@
 import { Tiny } from "@ant-design/charts";
+import { useModel } from "@umijs/max";
 import { Flex } from "antd";
 import type { PropsWithChildren } from "react";
 
@@ -10,7 +11,11 @@ interface Props extends PropsWithChildren {
 }
 
 export default function RingChart({ percent, children }: Props) {
+  const state = useModel("@@initialState", (v) => v.initialState);
   const config = {
+    theme: {
+      type: state?.config.isDark ? "dark" : "light",
+    },
     percent: percent / 100,
     width: 120,
     height: 120,

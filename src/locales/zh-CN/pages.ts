@@ -146,6 +146,7 @@ export default {
   "page.home.cpu.core": "核",
   "page.home.memory": "内存 使用率",
   "page.home.disk": "磁盘 使用率",
+  "page.home.network": "网络 使用率",
   "pages.404.subTitle": "您访问的资源不存在",
   "pages.500.subTitle": "系统错误，请稍后再试!",
   "pages.403.subTitle": " 您无权访问该资源!",

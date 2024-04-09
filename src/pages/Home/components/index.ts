@@ -1,6 +1,6 @@
-import LiquidChart from "./liquid-chart";
+import NetworkChart from "./network-chart";
 import RingChart from "./ring-chart";
 import SystemPanel from "./system-panel";
 import Welcome from "./welcome";
 
-export { LiquidChart, RingChart,SystemPanel, Welcome };
+export { NetworkChart, RingChart, SystemPanel, Welcome };
