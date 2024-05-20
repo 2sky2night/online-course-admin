@@ -2,7 +2,7 @@ import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage, history } from "@umijs/max";
 import { Button, message } from "antd";
 
-import { Action, Avatar,CreateTime, UpdateTime } from "@/components";
+import { Action, Avatar, CreateTime, UpdateTime } from "@/components";
 import type { VideoPartitionItem } from "@/types";
 
 type Render = (isTeacher: boolean) => ProColumns<VideoPartitionItem>[];
@@ -33,7 +33,7 @@ export const colunmsRender: Render = (isTeacher) => {
     {
       dataIndex: "partition_name",
       valueType: "text",
-      title: <FormattedMessage id="global.partition.name" defaultMessage="分区名" />,
+      title: <FormattedMessage id="global.partition.name" defaultMessage="课程名" />,
     },
     {
       dataIndex: "created_time",

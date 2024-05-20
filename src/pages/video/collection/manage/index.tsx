@@ -1,6 +1,6 @@
 import { ActionType, ProTable } from "@ant-design/pro-components";
 import { FormattedMessage } from "@umijs/max";
-import { Form, Input, message,Modal } from "antd";
+import { Form, Input, message, Modal } from "antd";
 import { useMemo, useRef, useState } from "react";
 
 import { Role } from "@/components";
@@ -19,7 +19,7 @@ import type { VideoCollectionListResponse as ListResponse } from "./types";
 export default function VideoCollectionManagePage() {
   const { t } = useI18n();
   const [open, setOpen] = useState(false);
-  // 编辑的合集数据
+  // 编辑的课程章节数据
   const [data, setData] = useState<{
     collection_name: string;
     description: string;
@@ -44,7 +44,7 @@ export default function VideoCollectionManagePage() {
     return (
       <ProTable<VideoCollection, PageParamsP>
         actionRef={actionRef}
-        headerTitle={t("pages.video.collection.title", "视频合集管理")}
+        headerTitle={t("pages.video.collection.title", "课程章节管理")}
         rowKey="collection_id"
         toolBarRender={(d) => {
           const refresh = () => {
@@ -84,7 +84,7 @@ export default function VideoCollectionManagePage() {
       <Modal
         open={open}
         title={
-          <FormattedMessage id="pages.video.collection.manage.edit" defaultMessage="编辑视频合集" />
+          <FormattedMessage id="pages.video.collection.manage.edit" defaultMessage="编辑课程章节" />
         }
         confirmLoading={loading}
         onCancel={() => {
@@ -110,7 +110,7 @@ export default function VideoCollectionManagePage() {
             message.success(
               <FormattedMessage
                 id="pages.video.collection.manage.editOk"
-                defaultMessage="编辑视频合集成功!"
+                defaultMessage="编辑课程章节成功!"
               />,
             );
             actionRef.current?.reload();

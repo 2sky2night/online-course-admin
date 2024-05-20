@@ -1,4 +1,4 @@
-import { Button, Card, Form, message,Space } from "antd";
+import { Button, Card, Form, message, Space } from "antd";
 import { useState } from "react";
 
 import { PartitionSelector } from "@/components";
@@ -12,11 +12,11 @@ interface Props {
 export default function EditVideoPartition({ videoId, partition }: Props) {
   const { t } = useI18n();
   /**
-   * 当前的分区信息
+   * 当前的课程信息
    */
   const [current, setCurrent] = useState<API.PartitionDto | null>(partition);
   /**
-   * 当前选择的分区信息
+   * 当前选择的课程信息
    */
   const [select, setSelect] = useState<API.PartitionDto | null>(null);
   /**
@@ -39,7 +39,7 @@ export default function EditVideoPartition({ videoId, partition }: Props) {
           { partition_id: select.partition_id },
         );
         setCurrent(select); // 更新视图
-        message.success(t("page.video.base.edit.partition.ok", "更新分区成功!"));
+        message.success(t("page.video.base.edit.partition.ok", "更新课程成功!"));
       } finally {
         setLoading(false);
         handleCancel();
@@ -50,7 +50,7 @@ export default function EditVideoPartition({ videoId, partition }: Props) {
   return (
     <Card
       type="inner"
-      title={t("page.video.base.edit.card.partition", "分区")}
+      title={t("page.video.base.edit.card.partition", "课程")}
       style={{ marginTop: "10px" }}
     >
       {isEdit ? (

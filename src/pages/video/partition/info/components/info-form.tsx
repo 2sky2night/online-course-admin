@@ -7,7 +7,7 @@ interface Props {
 }
 
 /**
- * 分区详情信息
+ * 课程详情信息
  * @returns
  */
 export default function PartitionInfoForm({ data }: Props) {
@@ -22,7 +22,7 @@ export default function PartitionInfoForm({ data }: Props) {
     {
       label: {
         id: "global.partition.name",
-        dv: "分区名",
+        dv: "课程名",
       },
       value: data.partition_name,
     },

@@ -32,7 +32,7 @@ export const colunmsRender: Render = (handleOpen) => [
   {
     dataIndex: "collection_name",
     valueType: "text",
-    title: <FormattedMessage id="global.collection.name" defaultMessage="合集名" />,
+    title: <FormattedMessage id="global.collection.name" defaultMessage="课程章节名" />,
   },
   {
     dataIndex: "description",

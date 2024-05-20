@@ -37,7 +37,7 @@ export default function VideoDataForm({ data }: Props) {
     {
       label: {
         id: "global.partition",
-        dv: "分区",
+        dv: "课程",
       },
       render: () => {
         const name = data.partition?.partition_name;

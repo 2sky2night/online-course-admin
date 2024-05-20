@@ -17,11 +17,11 @@ export default function CreatePartitionModal({ onSubmit }: Props) {
 
   return (
     <ModalForm<{ partition_name: string }>
-      title={t("pages.video.parition.manage.create", "创建分区")}
+      title={t("pages.video.parition.manage.create", "创建课程")}
       formRef={restFormRef}
       open={modalVisible}
       trigger={
-        <Button type="primary">{t("pages.video.parition.manage.create", "创建分区")}</Button>
+        <Button type="primary">{t("pages.video.parition.manage.create", "创建课程")}</Button>
       }
       onOpenChange={setModalVisible}
       submitter={{
@@ -37,7 +37,7 @@ export default function CreatePartitionModal({ onSubmit }: Props) {
       onFinish={async ({ partition_name }) => {
         try {
           await createPartition({ partition_name });
-          message.success(t("pages.video.parition.manage.createOk", "创建视频分区成功!"));
+          message.success(t("pages.video.parition.manage.createOk", "创建视频课程成功!"));
           restFormRef.current?.resetFields();
           onSubmit();
           return true;
@@ -46,7 +46,7 @@ export default function CreatePartitionModal({ onSubmit }: Props) {
         }
       }}
     >
-      <ProFormText width="md" name="partition_name" label={t("global.partition.name", "分区名")} />
+      <ProFormText width="md" name="partition_name" label={t("global.partition.name", "课程名")} />
     </ModalForm>
   );
 }

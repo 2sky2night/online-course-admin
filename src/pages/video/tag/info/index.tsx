@@ -1,5 +1,5 @@
 import { ProSkeleton } from "@ant-design/pro-components";
-import { FormattedMessage,history, useParams, useRequest } from "@umijs/max";
+import { FormattedMessage, history, useParams, useRequest } from "@umijs/max";
 
 import { Tabs, Title } from "@/components";
 import { videoTagControllerInfo as tagInfo } from "@/services/go_study_server/videoTag";
@@ -60,7 +60,7 @@ export default function TagInfoPage() {
             label: (
               <FormattedMessage
                 id="pages.video.tag.info.videoCollectionTitle"
-                defaultMessage="视频合集管理"
+                defaultMessage="课程章节管理"
               />
             ),
             children: <CollectionList tid={tid} />,

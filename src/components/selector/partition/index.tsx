@@ -44,7 +44,7 @@ type ListResponse = API.ResponseDto & {
 };
 
 /**
- * 分区选择器
+ * 课程选择器
  * @returns
  */
 export default function PartitionSelector({
@@ -52,7 +52,7 @@ export default function PartitionSelector({
   name = "partitionId",
   pageSize = 20,
   onChange = () => {},
-  placeholder = "请选择分区",
+  placeholder = "请选择课程",
   disabledList = [],
   renderForm = true,
 }: Props) {

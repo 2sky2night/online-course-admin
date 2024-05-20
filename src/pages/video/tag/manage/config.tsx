@@ -33,7 +33,7 @@ export const colunmsRender: Render = (isTeacher) => {
     {
       dataIndex: "tag_name",
       valueType: "text",
-      title: <FormattedMessage id="global.partition.name" defaultMessage="分区名" />,
+      title: <FormattedMessage id="global.partition.name" defaultMessage="课程名" />,
     },
     {
       dataIndex: "created_time",

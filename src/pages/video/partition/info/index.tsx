@@ -18,7 +18,7 @@ enum TabKey {
 }
 
 /**
- * 视频分区详情页
+ * 视频课程详情页
  */
 export default function PartitionInfoPage() {
   const { partition_id } = useParams();
@@ -34,7 +34,7 @@ export default function PartitionInfoPage() {
     <ProSkeleton type="descriptions"></ProSkeleton>
   ) : (
     <>
-      <Title title={{ id: "pages.video.parition.info.title", dv: "视频分区详情" }} />
+      <Title title={{ id: "pages.video.parition.info.title", dv: "视频课程详情" }} />
       <Tabs
         queryParam="tab"
         keys={[TabKey.INFO, TabKey.VIDEOS, TabKey.VIDEO_COLLECTIONS]}
@@ -64,7 +64,7 @@ export default function PartitionInfoPage() {
             label: (
               <FormattedMessage
                 id="pages.video.parition.info.videoCollectionTitle"
-                defaultMessage="视频合集管理"
+                defaultMessage="课程章节管理"
               />
             ),
             key: TabKey.VIDEO_COLLECTIONS,

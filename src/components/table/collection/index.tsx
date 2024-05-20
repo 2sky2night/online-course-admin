@@ -5,7 +5,7 @@ import { colunmsRender } from "./config";
 import { Props } from "./types";
 
 /**
- * 渲染视频合集的表格
+ * 渲染课程章节的表格
  */
 export default function VideoCollectionTable<T>({
   request,

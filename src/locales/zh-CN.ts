@@ -9,7 +9,7 @@ import settingDrawer from "./zh-CN/settingDrawer";
 import settings from "./zh-CN/settings";
 
 export default {
-  appName: "趣 学",
+  appName: "微课视频网站",
   ...pages,
   ...globalHeader,
   ...menu,

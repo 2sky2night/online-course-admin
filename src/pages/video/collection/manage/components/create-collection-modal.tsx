@@ -20,7 +20,7 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
       description: string;
     }>
       title={
-        <FormattedMessage id="pages.video.collection.manage.create" defaultMessage="创建视频合集" />
+        <FormattedMessage id="pages.video.collection.manage.create" defaultMessage="创建课程章节" />
       }
       formRef={restFormRef}
       open={modalVisible}
@@ -33,7 +33,7 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
         >
           <FormattedMessage
             id="pages.video.collection.manage.create"
-            defaultMessage="创建视频合集"
+            defaultMessage="创建课程章节"
           />
         </Button>
       }
@@ -57,7 +57,7 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
           message.success(
             <FormattedMessage
               id="pages.video.collection.manage.createOk"
-              defaultMessage="创建视频合集成功!"
+              defaultMessage="创建课程章节成功!"
             />,
           );
           restFormRef.current?.resetFields();
@@ -80,7 +80,7 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
             ),
           },
         ]}
-        label={<FormattedMessage id="global.collection.name" defaultMessage="合集名" />}
+        label={<FormattedMessage id="global.collection.name" defaultMessage="课程章节名" />}
       />
       <ProFormText
         width="md"

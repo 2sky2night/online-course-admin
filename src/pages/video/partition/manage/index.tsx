@@ -11,7 +11,7 @@ import { CreatePartitionModal } from "./components";
 import { colunmsRender } from "./config";
 import { PartitionListResponse as ListResponse } from "./types";
 /**
- * 视频分区管理页
+ * 视频课程管理页
  */
 export default function PartitionManagePage() {
   const { t } = useI18n();
@@ -22,14 +22,14 @@ export default function PartitionManagePage() {
   }, []);
   return (
     <ProTable
-      headerTitle={t("pages.video.parition.manage.title", "视频分区管理")}
+      headerTitle={t("pages.video.parition.manage.title", "视频课程管理")}
       rowKey="partition_id"
       columns={columns}
       toolBarRender={(v) => {
         return [
           <Role
             key="0"
-            roles={[Roles.ADMIN, Roles.SUPER_ADMIN]}
+            roles={[Roles.ADMIN, Roles.SUPER_ADMIN, Roles.TEACHER]} // 暂时给老师放开
             Component={() => <CreatePartitionModal onSubmit={() => v?.reload()} />}
           />,
         ];

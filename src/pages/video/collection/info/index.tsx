@@ -13,7 +13,7 @@ enum TabsKey {
 }
 
 /**
- * 视频合集详情页
+ * 课程章节详情页
  */
 export default function VideoCollectionInfoPage() {
   const { collection_id } = useParams();
@@ -29,7 +29,7 @@ export default function VideoCollectionInfoPage() {
     <ProSkeleton type="descriptions" />
   ) : (
     <>
-      <Title title={{ id: "pages.video.collection.info.title", dv: "视频合集详情" }} />
+      <Title title={{ id: "pages.video.collection.info.title", dv: "课程章节详情" }} />
       <Tabs
         queryParam="tab"
         defaultKeys={TabsKey.INFO}

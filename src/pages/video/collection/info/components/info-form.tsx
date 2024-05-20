@@ -8,7 +8,7 @@ interface Props {
 }
 
 /**
- * 合集信息
+ * 课程章节信息
  */
 export default function CollectionInfoForm({ data }: Props) {
   const items: FormItem[] = useMemo(
@@ -16,7 +16,7 @@ export default function CollectionInfoForm({ data }: Props) {
       {
         label: {
           id: "global.collection.name",
-          dv: "合集名",
+          dv: "课程章节名",
         },
         value: data.collection_name,
       },

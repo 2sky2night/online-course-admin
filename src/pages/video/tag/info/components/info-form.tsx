@@ -21,7 +21,7 @@ export default function TagInfoForm({ data }: Props) {
     {
       label: {
         id: "global.tag.name",
-        dv: "分区名",
+        dv: "课程名",
       },
       value: data.tag_name,
     },

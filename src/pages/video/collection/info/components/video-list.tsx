@@ -46,7 +46,7 @@ export default function VideoList({ collectionId, creatorId }: Props) {
                       description={
                         <FormattedMessage
                           id="pages.video.collection.info.remove.tips"
-                          defaultMessage="确认要从合集中移除该视频?"
+                          defaultMessage="确认要从课程章节中移除该视频?"
                         />
                       }
                       onConfirm={async () => {
