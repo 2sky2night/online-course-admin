@@ -1,4 +1,5 @@
 import { Form, Select } from "antd";
+import type { ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { videoPartitionControllerList as partitionList } from "@/services/go_study_server/videoPartition";
@@ -8,7 +9,7 @@ interface Props {
   /**
    * 是否渲染表单标签
    */
-  label?: string;
+  label?: string | ReactNode;
   /**
    * 表单项收集的值（若是表单则可以在提交时通过name收集值）
    */

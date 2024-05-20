@@ -4,6 +4,7 @@ import { FormattedMessage } from "@umijs/max";
 import { Button, message } from "antd";
 import { useRef, useState } from "react";
 
+import { PartitionSelector } from "@/components";
 import { videoCollectionControllerPublishCollection as createCollection } from "@/services/go_study_server/videoCollection";
 
 interface Props {
@@ -18,6 +19,7 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
     <ModalForm<{
       collection_name: string;
       description: string;
+      partitionId: number | null;
     }>
       title={
         <FormattedMessage id="pages.video.collection.manage.create" defaultMessage="创建课程章节" />
@@ -48,11 +50,12 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
           },
         },
       }}
-      onFinish={async ({ description, collection_name }) => {
+      onFinish={async ({ description, collection_name, partitionId }) => {
         try {
           await createCollection({
             collection_name,
-            description: description ? description : undefined,
+            description: description || undefined,
+            partition_id: partitionId || undefined,
           });
           message.success(
             <FormattedMessage
@@ -86,6 +89,11 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
         width="md"
         name="description"
         label={<FormattedMessage id="global.description" defaultMessage="描述" />}
+      />
+      <PartitionSelector
+        renderForm
+        label={<FormattedMessage id="global.partition" defaultMessage="课程" />}
+        name="partitionId"
       />
     </ModalForm>
   );

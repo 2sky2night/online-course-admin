@@ -80,7 +80,7 @@ export default {
   "pages.video.collection.info.add.video": "添加微课视频",
   "pages.video.collection.info.add.video.ok": "添加微课视频成功!",
   "pages.video.parition.manage.title": "课程管理",
-  "pages.video.parition.manage.create": "编辑课程",
+  "pages.video.parition.manage.create": "创建课程",
   "pages.video.parition.manage.createOk": "创建课程成功!",
   "pages.video.parition.info.title": "课程详情",
   "pages.video.parition.info.infoTitle": "基本信息",
