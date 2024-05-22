@@ -203,6 +203,8 @@ declare namespace API {
     collection_cover: string;
     /** 创建者 */
     creator: AccountDto;
+    /** 视频数量 */
+    video_count: number;
   };
 
   type CollectionSubscribeControllerSubscribeListParams = {
@@ -235,6 +237,8 @@ declare namespace API {
     images: string[];
     /** 评论创建者 */
     user: UserDto;
+    /** 回复数量 */
+    reply_count: number;
   };
 
   type CpuDto = {
@@ -505,6 +509,10 @@ declare namespace API {
     partition_name: string;
     /** 发布者信息 */
     account: AccountDto;
+    /** 分区下的视频数量 */
+    video_count: number;
+    /** 分区下的合集数量 */
+    collection_count: number;
   };
 
   type PublishVideoDto = {
@@ -648,6 +656,13 @@ declare namespace API {
     tips?: string;
   };
 
+  type RGetVideoStatus = {
+    /** 是否收藏 */
+    is_star: boolean;
+    /** 是否点赞 */
+    is_like: boolean;
+  };
+
   type RLoginAccountDto = {
     /** 令牌 */
     access_token: string;
@@ -718,6 +733,10 @@ declare namespace API {
     duration: number;
     /** 发布者信息 */
     publisher: AccountDto;
+    /** 观看数量 */
+    view_count: number;
+    /** 评论数量，不包含回复数量 */
+    comment_count: number;
     /** 分区信息 */
     partition: PartitionDto;
     /** 视频源信息 */
@@ -747,6 +766,10 @@ declare namespace API {
     duration: number;
     /** 发布者信息 */
     publisher: AccountDto;
+    /** 观看数量 */
+    view_count: number;
+    /** 评论数量，不包含回复数量 */
+    comment_count: number;
   };
 
   type RVideoViewsCount = {
@@ -970,6 +993,10 @@ declare namespace API {
     cid: number;
   };
 
+  type VideoCollectionControllerDeleteCollectionParams = {
+    cid: number;
+  };
+
   type VideoCollectionControllerInfoParams = {
     cid: number;
   };
@@ -1048,6 +1075,10 @@ declare namespace API {
   };
 
   type VideoControllerDecWatchVideoParams = {
+    vid: number;
+  };
+
+  type VideoControllerDeleteVideoParams = {
     vid: number;
   };
 
@@ -1141,6 +1172,8 @@ declare namespace API {
     likes: number;
     /** 视频收藏数 */
     stars: number;
+    /** 评论数量，不包括回复数量 */
+    comments: number;
   };
 
   type VideoDto = {
@@ -1196,6 +1229,10 @@ declare namespace API {
     limit: number;
     desc: boolean;
     video_id: number;
+  };
+
+  type VideoPartitionControllerDeletePartitionParams = {
+    pid: number;
   };
 
   type VideoPartitionControllerInfoParams = {

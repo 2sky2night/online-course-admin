@@ -17,6 +17,20 @@ export async function videoControllerPublishVideo(
   });
 }
 
+/** 删除视频 软删除视频 DELETE /api/video/${param0} */
+export async function videoControllerDeleteVideo(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoControllerDeleteVideoParams,
+  options?: { [key: string]: any },
+) {
+  const { vid: param0, ...queryParams } = params;
+  return request<API.ResponseEmptyDto>(`/api/video/${param0}`, {
+    method: "DELETE",
+    params: { ...queryParams },
+    ...(options || {}),
+  });
+}
+
 /** 更新视频信息 老师更新视频的信息 PATCH /api/video/${param0} */
 export async function videoControllerUpdateInfo(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
@@ -123,7 +137,7 @@ export async function videoControllerGetVideoStatus(
   options?: { [key: string]: any },
 ) {
   const { vid: param0, ...queryParams } = params;
-  return request<API.ResponseDto & { data?: API.RVideoWatchCount }>(`/api/video/${param0}/status`, {
+  return request<API.ResponseDto & { data?: API.RGetVideoStatus }>(`/api/video/${param0}/status`, {
     method: "GET",
     params: { ...queryParams },
     ...(options || {}),

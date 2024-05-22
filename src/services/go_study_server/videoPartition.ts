@@ -53,6 +53,20 @@ export async function videoPartitionControllerInfo(
   );
 }
 
+/** 删除分区 软删除分区 DELETE /api/video/partition/${param0} */
+export async function videoPartitionControllerDeletePartition(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoPartitionControllerDeletePartitionParams,
+  options?: { [key: string]: any },
+) {
+  const { pid: param0, ...queryParams } = params;
+  return request<API.ResponseEmptyDto>(`/api/video/partition/${param0}`, {
+    method: "DELETE",
+    params: { ...queryParams },
+    ...(options || {}),
+  });
+}
+
 /** 修改分区信息 后台账户修改分区信息 PATCH /api/video/partition/${param0} */
 export async function videoPartitionControllerUpdatePartition(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
