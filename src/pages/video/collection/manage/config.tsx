@@ -1,8 +1,9 @@
 import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage, history } from "@umijs/max";
-import { Button, message, Space } from "antd";
+import { Button, message, Popconfirm } from "antd";
 
 import { Action, Avatar, CreateTime, Image, UpdateTime, VideoPermission } from "@/components";
+import { videoCollectionControllerDeleteCollection as deleteCollection } from "@/services/go_study_server/videoCollection";
 import type { VideoCollection } from "@/types";
 
 type Render = (handleOpen: (collection: VideoCollection) => void) => ProColumns<VideoCollection>[];
@@ -73,29 +74,49 @@ export const colunmsRender: Render = (handleOpen) => [
   {
     valueType: "option",
     title: <Action />,
-    render(_, entity) {
+    render(_, entity, __, action) {
       return (
-        <VideoPermission
-          creatorId={entity.creator.account_id}
-          toAdmin={false}
-          Component={() => {
-            return (
-              <Space>
-                <Button size="small" type="primary" onClick={() => handleOpen(entity)}>
-                  <FormattedMessage id="global.edit" defaultMessage="编辑" />
-                </Button>
+        <>
+          <VideoPermission
+            creatorId={entity.creator.account_id}
+            toAdmin={false}
+            Component={() => {
+              return (
                 <Button
+                  style={{ marginRight: "5px" }}
                   size="small"
                   type="primary"
-                  danger
-                  onClick={() => message.info("二次确认删除")}
+                  onClick={() => handleOpen(entity)}
                 >
-                  <FormattedMessage id="global.delete" defaultMessage="删除" />
+                  <FormattedMessage id="global.edit" defaultMessage="编辑" />
                 </Button>
-              </Space>
-            );
-          }}
-        />
+              );
+            }}
+          />
+          <VideoPermission
+            creatorId={entity.creator.account_id}
+            toAdmin
+            Component={() => {
+              return (
+                <Popconfirm
+                  title="提示"
+                  description="确认要删除?"
+                  onConfirm={async () => {
+                    await deleteCollection({ cid: entity.collection_id });
+                    message.success(
+                      <FormattedMessage id="global.action.ok" defaultMessage="操作成功" />,
+                    );
+                    action?.reload();
+                  }}
+                >
+                  <Button size="small" type="primary" danger>
+                    <FormattedMessage id="global.delete" defaultMessage="删除" />
+                  </Button>
+                </Popconfirm>
+              );
+            }}
+          />
+        </>
       );
     },
   },
