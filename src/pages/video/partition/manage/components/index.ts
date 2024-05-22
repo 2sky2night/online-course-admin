@@ -1,2 +1,3 @@
 import CreatePartitionModal from "./create-modal";
-export { CreatePartitionModal };
+import EditPartitionModal from "./edit-modal";
+export { CreatePartitionModal, EditPartitionModal };

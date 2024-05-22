@@ -82,6 +82,8 @@ export default {
   "pages.video.parition.manage.title": "视频分区管理",
   "pages.video.parition.manage.create": "创建分区",
   "pages.video.parition.manage.createOk": "创建视频分区成功!",
+  "pages.video.parition.manage.edit": "编辑分区",
+  "pages.video.parition.manage.editOk": "编辑视频分区成功!",
   "pages.video.parition.info.title": "视频分区详情",
   "pages.video.parition.info.infoTitle": "基本信息",
   "pages.video.parition.info.videoTitle": "视频管理",
