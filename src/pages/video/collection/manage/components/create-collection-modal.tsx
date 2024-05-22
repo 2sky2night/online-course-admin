@@ -91,6 +91,7 @@ export default function CreateCollectionModal({ onSubmit }: Props) {
         label={<FormattedMessage id="global.description" defaultMessage="描述" />}
       />
       <PartitionSelector
+        showOwner
         renderForm
         label={<FormattedMessage id="global.partition" defaultMessage="课程" />}
         name="partitionId"

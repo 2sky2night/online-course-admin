@@ -2,6 +2,7 @@ import { Form, Select } from "antd";
 import type { ReactNode } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
+import { useModel } from "@/.umi/plugin-model";
 import { videoPartitionControllerList as partitionList } from "@/services/go_study_server/videoPartition";
 import type { VideoPartitionItem } from "@/types";
 
@@ -34,6 +35,10 @@ interface Props {
    * 渲染表单项组件？
    */
   renderForm?: boolean;
+  /**
+   * 只显示自己创建的分区
+   */
+  showOwner?: boolean;
 }
 
 type ListResponse = API.ResponseDto & {
@@ -56,19 +61,37 @@ export default function PartitionSelector({
   placeholder = "请选择课程",
   disabledList = [],
   renderForm = true,
+  showOwner = false,
 }: Props) {
+  const state = useModel("@@initialState", (v) => v.initialState);
   const [list, setList] = useState<VideoPartitionItem[]>([]);
   const [loading, setLoading] = useState(false);
   const pageRef = useRef(1);
   const hasMoreRef = useRef(false);
   const options = useMemo(() => {
-    const items = list.map((item) => {
-      return {
-        value: item.partition_id,
-        label: item.partition_name,
-        disabled: false,
-      };
-    });
+    let items = [];
+    if (showOwner && state?.account?.account_id) {
+      // 只展示自己创建的课程，因为后端未实现对列表的过滤，只有前端来实现
+      items = list
+        .filter((item) => {
+          return item.account.account_id === state.account?.account_id;
+        })
+        .map((item) => {
+          return {
+            value: item.partition_id,
+            label: item.partition_name,
+            disabled: false,
+          };
+        });
+    } else {
+      items = list.map((item) => {
+        return {
+          value: item.partition_id,
+          label: item.partition_name,
+          disabled: false,
+        };
+      });
+    }
     if (disabledList.length) {
       items.forEach((item) => {
         item.disabled = disabledList.includes(item.value);

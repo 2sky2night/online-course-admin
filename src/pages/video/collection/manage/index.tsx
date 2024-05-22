@@ -98,6 +98,7 @@ export default function VideoCollectionManagePage() {
             collection_name: "",
             description: "",
             collection_id: null,
+            partitionId: null,
           });
         }}
         onOk={async () => {
@@ -170,6 +171,7 @@ export default function VideoCollectionManagePage() {
             ></Input.TextArea>
           </Form.Item>
           <PartitionSelector
+            showOwner
             renderForm
             label={<FormattedMessage id="global.partition" defaultMessage="课程" />}
             name="partitionId"
