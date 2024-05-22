@@ -1,6 +1,5 @@
 import type { ActionType } from "@ant-design/pro-components";
 import { ProTable } from "@ant-design/pro-components";
-import { useModel } from "@umijs/max";
 import { useMemo, useRef, useState } from "react";
 
 import { Role } from "@/components";
@@ -18,7 +17,6 @@ import { PartitionListResponse as ListResponse } from "./types";
  */
 export default function PartitionManagePage() {
   const { t } = useI18n();
-  const initialState = useModel("@@initialState", (v) => v.initialState);
   const actionRef = useRef<ActionType | null>(null);
   // 是否显示编辑弹窗
   const [showEdit, setShowEdit] = useState(false);
@@ -33,8 +31,7 @@ export default function PartitionManagePage() {
     setShowEdit(true);
   };
   const columns = useMemo(() => {
-    const flag = initialState?.account?.role?.role_name === Roles.TEACHER;
-    return colunmsRender(flag, handleEdit);
+    return colunmsRender(handleEdit);
   }, []);
 
   return (

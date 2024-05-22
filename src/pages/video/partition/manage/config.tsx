@@ -2,19 +2,18 @@ import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage, history } from "@umijs/max";
 import { Button, message, Popconfirm } from "antd";
 
-import { Action, Avatar, CreateTime, UpdateTime } from "@/components";
+import { Action, Avatar, CreateTime, UpdateTime, VideoPermission } from "@/components";
 import { videoPartitionControllerDeletePartition as deletePartition } from "@/services/go_study_server/videoPartition";
 import type { VideoPartitionItem } from "@/types";
 
 type Render = (
-  isTeacher: boolean,
   handleEdit: (entity: VideoPartitionItem) => void,
 ) => ProColumns<VideoPartitionItem>[];
 
 /**
  * 表单的配置项
  */
-export const colunmsRender: Render = (isTeacher, handleEdit) => {
+export const colunmsRender: Render = (handleEdit) => {
   const list: ProColumns<VideoPartitionItem>[] = [
     {
       dataIndex: "partition_id",
@@ -56,37 +55,50 @@ export const colunmsRender: Render = (isTeacher, handleEdit) => {
         return <Avatar src={avatar} username={account_name} />;
       },
     },
-  ];
-
-  if (!isTeacher) {
-    list.push({
+    {
       valueType: "option",
       title: <Action />,
       render: (_, entity, __, action) => {
         return (
           <>
-            <Button size="small" type="primary" onClick={() => handleEdit(entity)}>
-              <FormattedMessage id="global.edit" defaultMessage="编辑" />
-            </Button>
-            <Popconfirm
-              title="提示"
-              description="确认要删除?"
-              onConfirm={async () => {
-                await deletePartition({ pid: entity.partition_id });
-                message.success(
-                  <FormattedMessage id="global.action.ok" defaultMessage="操作成功" />,
+            <VideoPermission
+              creatorId={entity.account.account_id}
+              toAdmin={false}
+              Component={() => {
+                return (
+                  <Button size="small" type="primary" onClick={() => handleEdit(entity)}>
+                    <FormattedMessage id="global.edit" defaultMessage="编辑" />
+                  </Button>
                 );
-                action?.reload();
               }}
-            >
-              <Button style={{ marginLeft: "5px" }} size="small" type="primary" danger>
-                <FormattedMessage id="global.delete" defaultMessage="删除" />
-              </Button>
-            </Popconfirm>
+            />
+            <VideoPermission
+              creatorId={entity.account.account_id}
+              toAdmin
+              Component={() => {
+                return (
+                  <Popconfirm
+                    title="提示"
+                    description="确认要删除?"
+                    onConfirm={async () => {
+                      await deletePartition({ pid: entity.partition_id });
+                      message.success(
+                        <FormattedMessage id="global.action.ok" defaultMessage="操作成功" />,
+                      );
+                      action?.reload();
+                    }}
+                  >
+                    <Button style={{ marginLeft: "5px" }} size="small" type="primary" danger>
+                      <FormattedMessage id="global.delete" defaultMessage="删除" />
+                    </Button>
+                  </Popconfirm>
+                );
+              }}
+            />
           </>
         );
       },
-    });
-  }
+    },
+  ];
   return list;
 };
