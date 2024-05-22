@@ -17,6 +17,20 @@ export async function videoCollectionControllerPublishCollection(
   });
 }
 
+/** 删除合集 软删除合集 DELETE /api/video/collection/${param0} */
+export async function videoCollectionControllerDeleteCollection(
+  // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
+  params: API.VideoCollectionControllerDeleteCollectionParams,
+  options?: { [key: string]: any },
+) {
+  const { cid: param0, ...queryParams } = params;
+  return request<API.ResponseEmptyDto>(`/api/video/collection/${param0}`, {
+    method: "DELETE",
+    params: { ...queryParams },
+    ...(options || {}),
+  });
+}
+
 /** 更新视频合集的信息 老师更新视频合集的信息 PATCH /api/video/collection/${param0} */
 export async function videoCollectionControllerUpdateInfo(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
