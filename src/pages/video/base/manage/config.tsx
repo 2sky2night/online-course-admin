@@ -1,9 +1,10 @@
 import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage, history } from "@umijs/max";
-import { Button, Space } from "antd";
+import { Button, message,Popconfirm, Space } from "antd";
 
 import { Action, CreateTime, Image, Role, UpdateTime, VideoPermission } from "@/components";
 import { Roles } from "@/enums";
+import { videoControllerDeleteVideo as deleteVideo } from "@/services/go_study_server/video";
 import type { VideoItem } from "@/types";
 
 type Render = () => ProColumns<VideoItem>[];
@@ -68,7 +69,7 @@ export const colunmsRender: Render = () => [
   {
     valueType: "option",
     title: <Action />,
-    render(_, { video_id, publisher: { account_id } }) {
+    render(_, { video_id, publisher: { account_id } }, __, action) {
       return (
         <VideoPermission
           creatorId={account_id}
@@ -87,9 +88,21 @@ export const colunmsRender: Render = () => [
                   </Button>
                 )}
               />
-              <Button size="small" danger type="primary">
-                <FormattedMessage id="global.delete" defaultMessage="删除" />
-              </Button>
+              <Popconfirm
+                title="提示"
+                description="确认要删除?"
+                onConfirm={async () => {
+                  await deleteVideo({ vid: video_id });
+                  message.success(
+                    <FormattedMessage id="global.action.ok" defaultMessage="操作成功" />,
+                  );
+                  action?.reload();
+                }}
+              >
+                <Button size="small" danger type="primary">
+                  <FormattedMessage id="global.delete" defaultMessage="删除" />
+                </Button>
+              </Popconfirm>
             </Space>
           )}
         />
