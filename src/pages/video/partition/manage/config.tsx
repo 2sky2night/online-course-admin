@@ -1,8 +1,9 @@
 import type { ProColumns } from "@ant-design/pro-components";
 import { FormattedMessage, history } from "@umijs/max";
-import { Button, message } from "antd";
+import { Button, message,Popconfirm } from "antd";
 
-import { Action, Avatar,CreateTime, UpdateTime } from "@/components";
+import { Action, Avatar, CreateTime, UpdateTime } from "@/components";
+import { videoPartitionControllerDeletePartition as deletePartition } from "@/services/go_study_server/videoPartition";
 import type { VideoPartitionItem } from "@/types";
 
 type Render = (isTeacher: boolean) => ProColumns<VideoPartitionItem>[];
@@ -58,16 +59,25 @@ export const colunmsRender: Render = (isTeacher) => {
     list.push({
       valueType: "option",
       title: <Action />,
-      render: () => {
+      render: (_, entity, __, action) => {
         return (
-          <Button
-            size="small"
-            type="primary"
-            danger
-            onClick={() => message.info("弹出模态框二次确认")}
-          >
-            <FormattedMessage id="global.delete" defaultMessage="删除" />
-          </Button>
+          <>
+            <Popconfirm
+              title="提示"
+              description="确认要删除?"
+              onConfirm={async () => {
+                await deletePartition({ pid: entity.partition_id });
+                message.success(
+                  <FormattedMessage id="global.action.ok" defaultMessage="操作成功" />,
+                );
+                action?.reload();
+              }}
+            >
+              <Button style={{ marginLeft: "5px" }} size="small" type="primary" danger>
+                <FormattedMessage id="global.delete" defaultMessage="删除" />
+              </Button>
+            </Popconfirm>
+          </>
         );
       },
     });
