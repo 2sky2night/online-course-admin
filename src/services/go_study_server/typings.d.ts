@@ -263,7 +263,7 @@ declare namespace API {
   };
 
   type CreatePartitionDto = {
-    /** 分区名称 */
+    /** 课程名称 */
     partition_name: string;
   };
 
@@ -292,7 +292,7 @@ declare namespace API {
     video_id_list?: number[];
     /** 视频合集封面 */
     collection_cover?: string;
-    /** 视频分区id，将此合集放在那个分区中? */
+    /** 视频课程id，将此合集放在那个课程中? */
     partition_id?: number;
     /** 视频合集的标签？ */
     tag_id_list?: number[];
@@ -340,9 +340,9 @@ declare namespace API {
     size: number;
     /** 磁盘使用率，百分比 */
     usage: number;
-    /** 分区名称 */
+    /** 课程名称 */
     fs: string;
-    /** 分区名称 */
+    /** 课程名称 */
     mount: string;
   };
 
@@ -490,9 +490,9 @@ declare namespace API {
     updated_time: string;
     /** 删除时间 */
     deleted_time: string;
-    /** 分区ID */
+    /** 课程ID */
     partition_id: number;
-    /** 分区名称 */
+    /** 课程名称 */
     partition_name: string;
   };
 
@@ -503,15 +503,15 @@ declare namespace API {
     updated_time: string;
     /** 删除时间 */
     deleted_time: string;
-    /** 分区ID */
+    /** 课程ID */
     partition_id: number;
-    /** 分区名称 */
+    /** 课程名称 */
     partition_name: string;
     /** 发布者信息 */
     account: AccountDto;
-    /** 分区下的视频数量 */
+    /** 课程下的视频数量 */
     video_count: number;
-    /** 分区下的合集数量 */
+    /** 课程下的合集数量 */
     collection_count: number;
   };
 
@@ -526,7 +526,7 @@ declare namespace API {
     collection_id_list?: number[];
     /** 视频的封面 */
     video_cover?: string;
-    /** 视频的分区 */
+    /** 视频的课程 */
     partition_id?: number;
     /** 视频的标签 */
     tag_id_list?: number[];
@@ -737,7 +737,7 @@ declare namespace API {
     view_count: number;
     /** 评论数量，不包含回复数量 */
     comment_count: number;
-    /** 分区信息 */
+    /** 课程信息 */
     partition: PartitionDto;
     /** 视频源信息 */
     source: SourceDto[];
@@ -851,7 +851,7 @@ declare namespace API {
   };
 
   type UpdateCollectionPartitionDto = {
-    /** 分区id */
+    /** 课程id */
     partition_id: number;
   };
 
@@ -863,7 +863,7 @@ declare namespace API {
   };
 
   type UpdatePartitionDto = {
-    /** 分区名称 */
+    /** 课程名称 */
     partition_name: string;
   };
 
@@ -902,7 +902,7 @@ declare namespace API {
   };
 
   type UpdateVideoPartitionDto = {
-    /** 分区的id */
+    /** 课程的id */
     partition_id: number;
   };
 

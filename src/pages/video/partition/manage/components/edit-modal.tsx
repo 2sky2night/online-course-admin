@@ -19,7 +19,7 @@ export default function EditPartitionModal({ onSubmit, editData, show, onOpenCha
 
   return (
     <ModalForm<{ partition_name: string }>
-      title={t("pages.video.parition.manage.edit", "编辑分区")}
+      title={t("pages.video.parition.manage.edit", "编辑课程")}
       formRef={restFormRef}
       open={show}
       onOpenChange={onOpenChange}
@@ -38,7 +38,7 @@ export default function EditPartitionModal({ onSubmit, editData, show, onOpenCha
         if (editData.id === null) return;
         try {
           await editPartition({ pid: editData.id }, { partition_name });
-          message.success(t("pages.video.parition.manage.editOk", "编辑视频分区成功!"));
+          message.success(t("pages.video.parition.manage.editOk", "编辑视频课程成功!"));
           restFormRef.current?.resetFields();
           onSubmit();
           return true;
@@ -51,7 +51,7 @@ export default function EditPartitionModal({ onSubmit, editData, show, onOpenCha
         initialValue={editData.name}
         width="md"
         name="partition_name"
-        label={t("global.partition.name", "分区名")}
+        label={t("global.partition.name", "课程名")}
       />
     </ModalForm>
   );

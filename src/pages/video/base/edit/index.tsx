@@ -6,12 +6,12 @@ import { Title } from "@/components";
 import { videoControllerInfo as videoInfo } from "@/services/go_study_server/video";
 import type { VideoInfo } from "@/types";
 
-import { EditVideoInfo, EditVideoPartition, EditVideoTag } from "./components";
+import { EditVideoInfo } from "./components";
 /**
  * 编辑视频页
  * 1.基本信息回显
  * 2.基本信息编辑
- * 3.分区编辑
+ * 3.课程编辑
  * 4.标签编辑
  */
 export default function VideoEditPage() {
@@ -34,8 +34,8 @@ export default function VideoEditPage() {
     <div style={{ color: colorText }}>
       <Title title={{ id: "page.video.base.edit.title", dv: "编辑视频" }} />
       <EditVideoInfo data={data as VideoInfo} />
-      <EditVideoTag tags={(data as VideoInfo).tags} videoId={videoId} />
-      <EditVideoPartition partition={(data as VideoInfo).partition} videoId={videoId} />
+      {/* <EditVideoTag tags={(data as VideoInfo).tags} videoId={videoId} /> */}
+      {/* <EditVideoPartition partition={(data as VideoInfo).partition} videoId={videoId} /> */}
     </div>
   );
 }

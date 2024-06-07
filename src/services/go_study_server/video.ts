@@ -111,7 +111,7 @@ export async function videoControllerRemoveLike(
   });
 }
 
-/** 修改视频分区 老师修改视频分区 PATCH /api/video/${param0}/partition */
+/** 修改视频课程 老师修改视频课程 PATCH /api/video/${param0}/partition */
 export async function videoControllerUpdateVideoPartition(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoControllerUpdateVideoPartitionParams,
@@ -285,7 +285,7 @@ export async function videoControllerList(
   });
 }
 
-/** 查询某分区下的视频 查询某分区下的视频 GET /api/video/list/partition/${param0} */
+/** 查询某课程下的视频 查询某课程下的视频 GET /api/video/list/partition/${param0} */
 export async function videoControllerPartitionList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoControllerPartitionListParams,

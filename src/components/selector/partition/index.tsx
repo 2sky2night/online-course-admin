@@ -36,7 +36,7 @@ interface Props {
    */
   renderForm?: boolean;
   /**
-   * 只显示自己创建的分区
+   * 只显示自己创建的课程
    */
   showOwner?: boolean;
 }

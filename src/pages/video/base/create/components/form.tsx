@@ -3,7 +3,7 @@ import { history } from "@umijs/max";
 import { Form, message } from "antd";
 import { useRef } from "react";
 
-import { PartitionSelector, TagSelector, UploadImg, Video as VideoPlayer } from "@/components";
+import { UploadImg, Video as VideoPlayer } from "@/components";
 import type { UploadImgInst } from "@/components/img/upload";
 import { staticServerUrl } from "@/config";
 import { FileSize } from "@/enums";
@@ -70,16 +70,17 @@ export default function PulishVideoForm({ file }: Props) {
           width="800px"
         />
       </Form.Item>
-      <PartitionSelector
+      {/* <PartitionSelector
+        showOwner
         placeholder={t("global.form.please.select", "请选择")}
         name="partition_id"
         label={t("global.partition", "课程")}
-      />
-      <TagSelector
+      /> */}
+      {/* <TagSelector
         placeholder={t("global.form.please.select", "请选择")}
         name="tag_id_list"
         label={t("global.tag", "标签")}
-      />
+      /> */}
       <Form.Item label={t("global.cover", "封面")}>
         <UploadImg
           ref={uploadRef}

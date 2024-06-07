@@ -50,7 +50,7 @@ export async function videoTagControllerUpdateTag(
   });
 }
 
-/** 查询某个分区下的视频合集 分页查询某个分区下的所有视频合集 GET /api/video/tag/${param0}/collection */
+/** 查询某个课程下的视频合集 分页查询某个课程下的所有视频合集 GET /api/video/tag/${param0}/collection */
 export async function videoTagControllerCollectionList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoTagControllerCollectionListParams,
@@ -68,7 +68,7 @@ export async function videoTagControllerCollectionList(
   });
 }
 
-/** 查询某个分区下的视频 分页查询某个分区下的所有视频 GET /api/video/tag/${param0}/videos */
+/** 查询某个课程下的视频 分页查询某个课程下的所有视频 GET /api/video/tag/${param0}/videos */
 export async function videoTagControllerVideoList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoTagControllerVideoListParams,

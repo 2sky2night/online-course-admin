@@ -20,7 +20,7 @@ export default function PartitionManagePage() {
   const actionRef = useRef<ActionType | null>(null);
   // 是否显示编辑弹窗
   const [showEdit, setShowEdit] = useState(false);
-  // 编辑的分区信息
+  // 编辑的课程信息
   const [editData, setEditData] = useState<{ id: null | number; name: string }>({
     id: null,
     name: "",

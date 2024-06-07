@@ -40,7 +40,7 @@ export default function VideoCollectionManagePage() {
       collection_name: entity.collection_name,
       description: entity.description ? entity.description : "",
       collection_id: entity.collection_id,
-      partitionId: null, // TODO 列表不会查询分区的信息，所以置为空
+      partitionId: null, // TODO 列表不会查询课程的信息，所以置为空
     });
     setOpen(true);
   };

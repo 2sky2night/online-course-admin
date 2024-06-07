@@ -2,7 +2,7 @@
 /* eslint-disable */
 import { request } from "@umijs/max";
 
-/** 获取分区列表 获取分区列表 GET /api/video/partition */
+/** 获取课程列表 获取课程列表 GET /api/video/partition */
 export async function videoPartitionControllerList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoPartitionControllerListParams,
@@ -21,7 +21,7 @@ export async function videoPartitionControllerList(
   });
 }
 
-/** 创建分区 后台账户创建分区 POST /api/video/partition */
+/** 创建课程 后台账户创建课程 POST /api/video/partition */
 export async function videoPartitionControllerAddPartition(
   body: API.CreatePartitionDto,
   options?: { [key: string]: any },
@@ -36,7 +36,7 @@ export async function videoPartitionControllerAddPartition(
   });
 }
 
-/** 获取分区详情 获取分区详情 GET /api/video/partition/${param0} */
+/** 获取课程详情 获取课程详情 GET /api/video/partition/${param0} */
 export async function videoPartitionControllerInfo(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoPartitionControllerInfoParams,
@@ -53,7 +53,7 @@ export async function videoPartitionControllerInfo(
   );
 }
 
-/** 删除分区 软删除分区 DELETE /api/video/partition/${param0} */
+/** 删除课程 软删除课程 DELETE /api/video/partition/${param0} */
 export async function videoPartitionControllerDeletePartition(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoPartitionControllerDeletePartitionParams,
@@ -67,7 +67,7 @@ export async function videoPartitionControllerDeletePartition(
   });
 }
 
-/** 修改分区信息 后台账户修改分区信息 PATCH /api/video/partition/${param0} */
+/** 修改课程信息 后台账户修改课程信息 PATCH /api/video/partition/${param0} */
 export async function videoPartitionControllerUpdatePartition(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoPartitionControllerUpdatePartitionParams,

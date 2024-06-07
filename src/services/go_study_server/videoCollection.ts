@@ -50,7 +50,7 @@ export async function videoCollectionControllerUpdateInfo(
   });
 }
 
-/** 更新合集的分区 老师更新合集的分区 PATCH /api/video/collection/${param0}/partition */
+/** 更新合集的课程 老师更新合集的课程 PATCH /api/video/collection/${param0}/partition */
 export async function videoCollectionControllerUpdatePartition(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoCollectionControllerUpdatePartitionParams,
@@ -227,7 +227,7 @@ export async function videoCollectionControllerList(
   });
 }
 
-/** 查询此分区下的合集列表 分页查询此分区下的视频合集列表 GET /api/video/collection/list/partition/${param0} */
+/** 查询此课程下的合集列表 分页查询此课程下的视频合集列表 GET /api/video/collection/list/partition/${param0} */
 export async function videoCollectionControllerPartitionList(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.VideoCollectionControllerPartitionListParams,

@@ -24,12 +24,12 @@ export type VideoCollection = API.CollectionDtoA;
 export type VideoCollectionInfo = VideoCollection;
 
 /**
- * 视频分区列表项
+ * 视频课程列表项
  */
 export type VideoPartitionItem = API.PartitionInfoDto;
 
 /**
- * 视频分区详情信息
+ * 视频课程详情信息
  */
 export type VideoPartitionInfo = VideoPartitionItem;
 

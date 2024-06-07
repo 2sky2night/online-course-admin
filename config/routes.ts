@@ -168,18 +168,18 @@ export default [
             ],
           },
           {
-            // 视频分区
+            // 视频课程
             path: "partition",
             name: "partition",
             routes: [
               {
-                // 视频分区管理
+                // 视频课程管理
                 path: "manage",
                 component: "./video/partition/manage",
                 name: "manage",
               },
               {
-                // 视频分区详情
+                // 视频课程详情
                 path: "info/:partition_id",
                 component: "./video/partition/info",
                 name: "info",
@@ -188,27 +188,27 @@ export default [
               },
             ],
           },
-          {
-            // 视频标签
-            path: "tag",
-            name: "tag",
-            routes: [
-              {
-                // 视频分区管理
-                path: "manage",
-                component: "./video/tag/manage",
-                name: "manage",
-              },
-              {
-                // 视频分区详情
-                path: "info/:tag_id",
-                component: "./video/tag/info",
-                name: "tag",
-                hideInMenu: true,
-                parentKeys: ["/video/tag/manage"],
-              },
-            ],
-          },
+          // {
+          //   // 视频标签
+          //   path: "tag",
+          //   name: "tag",
+          //   routes: [
+          //     {
+          //       // 视频课程管理
+          //       path: "manage",
+          //       component: "./video/tag/manage",
+          //       name: "manage",
+          //     },
+          //     {
+          //       // 视频课程详情
+          //       path: "info/:tag_id",
+          //       component: "./video/tag/info",
+          //       name: "tag",
+          //       hideInMenu: true,
+          //       parentKeys: ["/video/tag/manage"],
+          //     },
+          //   ],
+          // },
           {
             // 视频评论
             path: "comment",
@@ -235,19 +235,19 @@ export default [
               },
             ],
           },
-          {
-            // 视频弹幕
-            path: "danmu",
-            name: "danmu",
-            routes: [
-              {
-                // 视频弹幕管理
-                path: "manage",
-                component: "./video/danmu/manage",
-                name: "manage",
-              },
-            ],
-          },
+          // {
+          //   // 视频弹幕
+          //   path: "danmu",
+          //   name: "danmu",
+          //   routes: [
+          //     {
+          //       // 视频弹幕管理
+          //       path: "manage",
+          //       component: "./video/danmu/manage",
+          //       name: "manage",
+          //     },
+          //   ],
+          // },
         ],
       },
     ],
